@@ -31,17 +31,6 @@ class Index extends React.Component {
               automatically generated from markdown files.{' '}
             </p>
             <CtaButton to={'/lesson-one'}>See Your First Post</CtaButton>
-
-            <div className="contributors">
-              <p>
-                Created by Eric Windmill.{' '}
-                <a href="https:twitter.com/ericwindmill">
-                  You should follow him on Twitter.
-                </a>{' '}
-                Also, <a href="https://github.com/Levino">Levin Keller</a> for
-                making it better than I could{"'"}ve alone.
-              </p>
-            </div>
           </BodyContainer>
         </main>
       </div>
