@@ -25,7 +25,7 @@ class Index extends React.Component {
             </Hero>
           </IndexHeadContainer>
           <BodyContainer>
-            <h2>Javascript Notes</h2>
+            <h2>Greetings...</h2>
             <p>
               This site contains collection of Javascript code snippets/notes.
               Created as a way for myself to get used to{' '}
@@ -38,7 +38,7 @@ class Index extends React.Component {
               </a>{' '}
               and writing in markdowns
             </p>
-            <CtaButton to={'/lesson-one'}>Get started</CtaButton>
+            <CtaButton to={'/lesson-01-variables'}>Get started</CtaButton>
           </BodyContainer>
         </main>
       </div>
@@ -58,6 +58,10 @@ const IndexHeadContainer = styled.div`
 
 const Hero = styled.div`
   padding: 50px 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+
   & > h1 {
     font-weight: 600;
   }

@@ -2,13 +2,13 @@
   "id": "table-of-contents",
   "chapters": [
     {
-      "title": "1. Main Chapter",
+      "title": "1. Syntax",
       "chapters": [
         {
-          "title": "1.1 Subchapter",
+          "title": "1.1 Variables",
           "entries": [
             {
-              "entry": "./lesson_one.md"
+              "entry": "./1_1_variables.md"
             }
           ],
           "chapters": [

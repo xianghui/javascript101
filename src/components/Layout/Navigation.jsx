@@ -16,6 +16,10 @@ const NavContainer = styled.div`
     color: white;
   }
 
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+
   @media screen and (max-width: 600px) {
     display: flex;
     flex-direction: column;
@@ -38,15 +42,15 @@ class Navigation extends React.Component {
         <section>
           <Link className="nav-link" to="/">
             {' '}
-            HOME{' '}
-          </Link>
+            Home
+          </Link>{' '}
           <Link className="nav-link" to="/lesson-one">
             {' '}
-            DOCS{' '}
-          </Link>
+            JS Notes
+          </Link>{' '}
           <Link className="nav-link" to="/about">
             {' '}
-            ABOUT{' '}
+            About
           </Link>
         </section>
         <span>
