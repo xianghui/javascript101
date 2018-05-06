@@ -1,6 +1,9 @@
+import bg from '../../static/coding.jpg';
+
 const theme = {
   // named colors:
-  brand: '#41B883',
+  brand: 'black',
+  headerImg: `url(${bg})`,
   accent: '#0a5eb7',
   accentDark: '#35495E',
   lightGrey: '#F6F6F6',
@@ -13,6 +16,6 @@ const theme = {
   // content width:
   contentWidthLaptop: '850px',
   sitePadding: '25px'
-}
+};
 
-export default theme
+export default theme;

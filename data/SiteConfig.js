@@ -6,12 +6,12 @@ module.exports = {
   siteLogo: '/logos/logo-1024.png', // Logo used for SEO and manifest.
   siteUrl: 'https://javascript101.netlify.com/', // Domain of your website without pathPrefix.
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: 'Learn Javascript', // Website description used for RSS feeds/meta description tag.
+  siteDescription: 'Collection of Javascript notes', // Website description used for RSS feeds/meta description tag.
   siteRss: '/rss.xml', // Path to the RSS file.
-  siteFBAppID: '1825356251115265', // FB Application ID for using app insights
-  googleAnalyticsID: '', // GA tracking ID.
+  siteFBAppID: '', // FB Application ID for using app insights
+  googleAnalyticsID: 'UA-118748543-1', // GA tracking ID.
   disqusShortname: '', // Disqus shortname.
-  postDefaultCategoryID: 'Tech', // Default category for posts.
+  postDefaultCategoryID: 'Coding', // Default category for posts.
   userName: 'User', // Username to display in the author segment.
   userTwitter: 'hsianghui', // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: 'Singapore', // User location to display in the author segment.

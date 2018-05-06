@@ -1,15 +1,15 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
+import React from 'react';
+import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
-import SEO from '../components/SEO'
-import config from '../../data/SiteConfig'
-import CtaButton from '../components/CtaButton'
-import Navigation from '../components/Layout/Navigation'
+import SEO from '../components/SEO';
+import config from '../../data/SiteConfig';
+import CtaButton from '../components/CtaButton';
+import Navigation from '../components/Layout/Navigation';
 
 class Index extends React.Component {
   render() {
-    const allSEOMarkdown = this.props.data.allMarkdown.edges
+    const allSEOMarkdown = this.props.data.allMarkdown.edges;
 
     return (
       <div className="index-container">
@@ -25,33 +25,43 @@ class Index extends React.Component {
             </Hero>
           </IndexHeadContainer>
           <BodyContainer>
-            <h2>A Gatsby Template for Content</h2>
+            <h2>Javascript Notes</h2>
             <p>
-              Made for modern documentation sites. Table of Contents
-              automatically generated from markdown files.{' '}
+              This site contains collection of Javascript code snippets/notes.
+              Created as a way for myself to get used to{' '}
+              <a
+                href="https://www.gatsbyjs.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GatsbyJs
+              </a>{' '}
+              and writing in markdowns
             </p>
-            <CtaButton to={'/lesson-one'}>See Your First Post</CtaButton>
+            <CtaButton to={'/lesson-one'}>Get started</CtaButton>
           </BodyContainer>
         </main>
       </div>
-    )
+    );
   }
 }
 
-export default Index
+export default Index;
 
 const IndexHeadContainer = styled.div`
-  background: ${props => props.theme.brand};
+  background: ${props => props.theme.headerImg};
   padding: ${props => props.theme.sitePadding};
   text-align: center;
-`
+  background-size: cover;
+  color: white;
+`;
 
 const Hero = styled.div`
   padding: 50px 0;
   & > h1 {
     font-weight: 600;
   }
-`
+`;
 
 const BodyContainer = styled.div`
   padding: ${props => props.theme.sitePadding};
@@ -62,7 +72,7 @@ const BodyContainer = styled.div`
     max-width: 400px;
     margin: 100px auto 0;
   }
-`
+`;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -109,4 +119,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

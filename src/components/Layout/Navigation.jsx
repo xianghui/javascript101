@@ -1,7 +1,7 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import styled from 'styled-components'
-import UserLinks from '../UserLinks'
+import React from 'react';
+import Link from 'gatsby-link';
+import styled from 'styled-components';
+import UserLinks from '../UserLinks';
 
 const NavContainer = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const NavContainer = styled.div`
     font-size: 1.6rem;
     margin-right: 10px;
     font-weight: 200;
-    color: black;
+    color: white;
   }
 
   @media screen and (max-width: 600px) {
@@ -29,7 +29,7 @@ const NavContainer = styled.div`
       display: none;
     }
   }
-`
+`;
 
 class Navigation extends React.Component {
   render() {
@@ -53,8 +53,8 @@ class Navigation extends React.Component {
           <UserLinks />
         </span>
       </NavContainer>
-    )
+    );
   }
 }
 
-export default Navigation
+export default Navigation;

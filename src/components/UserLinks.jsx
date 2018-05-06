@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FaGithubAlt, FaTwitter } from 'react-icons/lib/fa';
-import { MdMessage, MdEmail } from 'react-icons/lib/md';
+// import { MdMessage, MdEmail } from 'react-icons/lib/md';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -15,7 +15,7 @@ const UserIcon = styled.a`
   margin-left: 25px;
   color: white;
   &:hover {
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.7);
     border-bottom: none;
   }
 `;
@@ -29,10 +29,10 @@ class UserLinks extends Component {
   render() {
     return (
       <Container className="user-links">
-        <UserIcon href="https://github.com/xianghui">
+        <UserIcon href="https://github.com/xianghui" target="_blank">
           <FaGithubAlt style={iconStyle} />
         </UserIcon>
-        <UserIcon href="https://twitter.com/hsianghui">
+        <UserIcon href="https://twitter.com/hsianghui" target="_blank">
           <FaTwitter style={iconStyle} />
         </UserIcon>
       </Container>
