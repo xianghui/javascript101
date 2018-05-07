@@ -5,10 +5,10 @@
       "title": "1. Syntax",
       "chapters": [
         {
-          "title": "1.1 Variables",
+          "title": "1.1 Scoping and Variables",
           "entries": [
             {
-              "entry": "./1_1_variables.md"
+              "entry": "./1-1-scoping-and-variables.md"
             }
           ],
           "chapters": [
