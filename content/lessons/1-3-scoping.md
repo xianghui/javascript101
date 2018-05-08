@@ -208,5 +208,3 @@ One way to resolve this is to create the variable `i` in the closure for each of
 the `onclick` handler.
 
 ### `let`/`const` keyword
-
-### Hoisting

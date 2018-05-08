@@ -238,6 +238,155 @@ test2(-1); // test2(): -1
 test2(false); // test2(): false
 ```
 
+## Pass by value
+
+Similar to Java, JS is **pass by value**. We cannot change the value of the
+primitive type in a function. The function gets the value of the original
+variable instead of the reference of the variable. So when we modify the
+function variable, it does not modify the original variable.
+
+```javascript
+var globalVal = 10;
+function modifyVal(value) {
+  value = 11;
+}
+modifyVal(globalVal);
+console.log(globalVal); //10
+```
+
+Note that, if we were to pass in an object, it is possible to change the
+contents inside the object (e.g. a property of the object). However, again the
+function does not have the reference to the original variable so it cannot
+initialize the variable to point to another object (or another value). This is
+similar to the case for Java. For example, if you invoke a method and supply an
+ArrayList, you can change the contents of the ArrayList, but you cannot pass the
+
+```javascript
+var globalObj = { var1: 'OLD_VALUE' };
+console.log(globalObj);
+
+function modifyObject(obj) {
+  obj.var1 = 'NEW_VALUE';
+}
+modifyObject(globalObj);
+console.log(globalObj);
+```
+
+```java
+//Java example
+public static void addItem(ArrayList<String> array){
+  array.add("new item");
+}
+
+ArrayList<String> arr = new ArrayList<String>();
+System.out.println(arr.size()); //0
+addItem(arr);
+System.out.println(arr.size()); //1
+
+
+public static void changeItem(ArrayList<String> array){
+  array = new ArrayList<String>();
+  array.add("new item");
+}
+
+ArrayList<String> arr = new ArrayList<String>();
+System.out.println(arr.size()); //0
+changeItem(arr);
+System.out.println(arr.size()); //0
+```
+
 ## Nested functions
 
+It is possible to define functions inside a function.
+
+```javascript
+function areaCircle(radius) {
+  var square = function(n) {
+    return n * n;
+  };
+
+  return Math.PI * square(radius);
+}
+
+console.log(areaCircle(3)); //PI * 3 * 3
+
+//similar example:
+function areaCircle1(radius) {
+  function square(n) {
+    return n * n;
+  }
+
+  return Math.PI * square(radius);
+}
+
+console.log(areaCircle1(3)); //PI * 3 * 3
+```
+
+### Higher order function
+
+It is also possible for a function to return another function as the return
+result.
+
+```javascript
+var powerOf = function(base) {
+  return function(exponent) {
+    var result = 1;
+    for (var i = 0; i < exponent; i++) {
+      result *= base;
+    }
+    return result;
+  };
+};
+var powerOf2 = powerOf(2);
+var powerOf3 = powerOf(3);
+var square_2 = powerOf2(2); //4
+var cube_3 = powerOf3(3); //27
+```
+
 ## First class citizen
+
+We have seen that it is possible to assign a function to a variable.
+
+```javascript
+var func = function() { ... };
+```
+
+Function values works like a variable which can be passed into another function.
+
+```javascript
+var success = function() {
+  console.log('success!');
+};
+
+var failure = function() {
+  console.log('failure!');
+};
+
+function checkPassword(pwd, successCallback, failureCallback) {
+  if (pwd === 'SECRET') {
+    successCallback();
+  } else {
+    failureCallback();
+  }
+}
+
+checkPassword('SECRET', success, failure); //success!
+checkPassword('WRONG', success, failure); //failure!
+```
+
+Functions are **First Class Citizen** in Javascript.
+
+> _In programming language design, a first-class citizen (also type, object,
+> entity, or value) in a given programming language is an entity which supports
+> all the operations generally available to other entities. **These operations
+> typically include being passed as an argument, returned from a function,
+> modified, and assigned to a variable**._
+>
+> Source:
+> <a href="https://en.wikipedia.org/wiki/First-class_citizen" target="_blank">Wikipedia</a>
+
+Specifically:
+
+* function can be passed as argument (function values)
+* function can be returned from a function (higher order function)
+* function can be assigned to a variable

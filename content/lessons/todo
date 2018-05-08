@@ -1,3 +1,5 @@
 -strict mode
 -destructuring (array, object)
 -callbacks, async-await
+-arrow functions
+-map,forEach
