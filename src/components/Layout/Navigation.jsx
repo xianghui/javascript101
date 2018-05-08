@@ -44,7 +44,7 @@ class Navigation extends React.Component {
             {' '}
             Home
           </Link>{' '}
-          <Link className="nav-link" to="/lesson-one">
+          <Link className="nav-link" to="/1-1-variables">
             {' '}
             JS Notes
           </Link>{' '}
