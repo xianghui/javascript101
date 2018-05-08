@@ -22,6 +22,14 @@
               "entry": "./1-3-scoping.md"
             }
           ]
+        },
+        {
+          "title": "Object-Oriented Programming",
+          "entries": [
+            {
+              "entry": "./1-4-objects.md"
+            }
+          ]
         }
       ]
     },
@@ -32,7 +40,7 @@
           "title": "2.1 Subchapter",
           "entries": [
             {
-              "entry": "./lesson_five.md"
+              "entry": "./lesson_two.md"
             }
           ]
         }
@@ -42,7 +50,7 @@
       "title": "3. Main Chapter",
       "entries": [
         {
-          "entry": "./lesson_six.md"
+          "entry": "./lesson_two.md"
         }
       ]
     }

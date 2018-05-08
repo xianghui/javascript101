@@ -16,15 +16,91 @@ a = 'hello';
 console.log(a + ' ' + typeof a); //hello string
 ```
 
-## Special values
+In order to access the developer console, press F12 (windows/chrome, firefox) or
+Cmd+Opt+J (mac/chrome).
 
-Other than assigning proper values to a variable, there are also other special
-values (`undefined`, `null`, `not defined`) in Javascript.
+![](images/consolelog.png "console.log")
+
+## Data types
+
+JS has 6 primitive data types: `undefined`, `null`, `number`, `string`,
+`boolean`, and `symbol`. You can choose to enclose strings with single quotes
+(`'`) or double quotes (`"`). There is also the `object` type for complex type.
 
 ```javascript
-var b; //same as b = undefined
-console.log(b + ' ' + typeof b); //undefined undefined
+typeof 1; //number
+typeof 1.12; //number
+typeof 'Tom'; //string
+typeof true; //boolean
+String(1234); //"1234"
+typeof String(1234); //string
+
+typeof { name: 'John' }; //object
+typeof [1, 2, 3]; //object
+typeof new Date(); //object
+```
+
+## Undefined vs Not defined
+
+Other than assigning proper values to a variable, there are also other special
+values (`null`, `undefined`, `not defined` ) in Javascript. Note that
+**undefined** is not the same as **not defined**. Undefined is when a variable
+is declared but not assigned any value. Whereas, if you try to access a variable
+that is not declared, an error is thrown indicating that the variable is not
+defined (or not declared).
+
+```javascript
 var c = null;
 console.log(c + ' ' + typeof c); //null object
+
+var b; //same as b = undefined
+console.log(b + ' ' + typeof b); //undefined undefined
 console.log(d + ' ' + typeof d); //Error: d is not defined
+
+undefined + 'abc'; //"undefinedabc"
+undefined + '1'; //undefined1
+
+typeof (undefined + 'abc'); //string
+```
+
+## Auto type conversion
+
+Javascript does auto type conversion when you assign a value to a variable. It
+tries its best to determine the type of your variable/expression.
+
+```javascript
+1 / 10; //0.1
+0.9 + 0.1; //1
+
+1 / '10'; //0.1
+'10' * '2'; //20
+
+1 + '10'; //"110"
+'10' + 1; //"101"
++'10' + 1; //11
+'123' - 3; //120
+
+1 + true; //2
+true + 'hello'; //"truehello"
+
+Number('100') + 200; //300
+Number(' '); //0 (same as Number(""))
+```
+
+Like with most programming languages, when handling numeric arithmetic, NaN
+(**N**ot **a** **N**umber) and Infinity cases are usually quite weird.
+
+```javascript
+undefined + 1; //NaN
+typeof NaN; // number
+
+1 / 0; //Infinity
+typeof (1 / 0); //number
+typeof Infinity; //number
+
+1 / 0 - 1; //Infinity
+Infinity - Infinity; //NaN
+Infinity + Infinity; //Infinity
+Infinity * Infinity; //Infinity
+Infinity / Infinity; //NaN
 ```
