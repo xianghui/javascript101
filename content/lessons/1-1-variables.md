@@ -26,6 +26,7 @@ Cmd+Opt+J (mac/chrome).
 JS has 6 primitive data types: `undefined`, `null`, `number`, `string`,
 `boolean`, and `symbol`. You can choose to enclose strings with single quotes
 (`'`) or double quotes (`"`). There is also the `object` type for complex type.
+You can also assign functions to a variable.
 
 ```javascript
 typeof 1; //number
@@ -38,6 +39,9 @@ typeof String(1234); //string
 typeof { name: 'John' }; //object
 typeof [1, 2, 3]; //object
 typeof new Date(); //object
+
+var f = function() {};
+typeof f; //function
 ```
 
 ## Undefined vs Not defined

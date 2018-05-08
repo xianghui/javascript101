@@ -28,7 +28,10 @@ class Index extends React.Component {
             <h2>Greetings...</h2>
             <p>
               This site contains collection of Javascript code snippets/notes.
-              Created as a way for myself to get used to{' '}
+              The notes were written with the assumption that you have prior
+              programming knownledge.
+              <br />
+              <br />Created using{' '}
               <a
                 href="https://www.gatsbyjs.org/"
                 target="_blank"
@@ -36,7 +39,7 @@ class Index extends React.Component {
               >
                 GatsbyJs
               </a>{' '}
-              and writing in markdowns
+              as a way to help me get used to writing in markdowns
             </p>
             <CtaButton to={'/1-1-variables'}>Get started</CtaButton>
           </BodyContainer>
