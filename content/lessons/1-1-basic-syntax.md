@@ -51,10 +51,6 @@ situations:
   software used to write this document) not to prettify the code</sub>
 
 ```javascript
-/* eslint-disable prettier/prettier */
-var a = 10;
-var b = 20;
-
 // prettier-ignore
 function foo() {
   return
