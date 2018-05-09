@@ -41,7 +41,7 @@ class Index extends React.Component {
               </a>{' '}
               as a way to help me get used to writing in markdowns
             </p>
-            <CtaButton to={'/1-1-variables'}>Get started</CtaButton>
+            <CtaButton to={'/1-1-basic-syntax'}>Get started</CtaButton>
           </BodyContainer>
         </main>
       </div>

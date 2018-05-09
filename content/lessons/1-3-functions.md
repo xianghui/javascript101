@@ -1,5 +1,5 @@
 ---
-title: "1.2 Functions"
+title: "1.3 Functions"
 ---
 
 ## Function declaration
@@ -63,7 +63,7 @@ foo1(7, undefined, 8);
 //z is 8
 ```
 
-[Recall that there is a difference between **undefined** and **not defined**](/1-1-variables#undefined-vs-not-defined).
+[Recall that there is a difference between **undefined** and **not defined**](/1-2-variables#undefined-vs-not-defined).
 **Undefined** is used to denote cases where a variable is declared but not
 assigned a value, whereas **not defined** is an error that is thrown when that
 variable is declared. When you try to access a variable that is not declared (as

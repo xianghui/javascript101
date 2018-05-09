@@ -1,5 +1,5 @@
 ---
-title: "1.1 Variables"
+title: "1.2 Variables"
 ---
 
 ## Variable declaration and assignment
@@ -14,12 +14,10 @@ var a = 5;
 console.log(a + ' ' + typeof a); //5 number
 a = 'hello';
 console.log(a + ' ' + typeof a); //hello string
+
+//declare multiple variables
+var n1, n2;
 ```
-
-In order to access the developer console, press F12 (windows/chrome, firefox) or
-Cmd+Opt+J (mac/chrome).
-
-![](images/consolelog.png "console.log")
 
 ## Data types
 
@@ -70,7 +68,8 @@ typeof (undefined + 'abc'); //string
 ## Auto type conversion
 
 Javascript does auto type conversion when you assign a value to a variable. It
-tries its best to determine the type of your variable/expression.
+tries its best to determine the type of your variable/expression. JS also
+performs type coercion when an expression contains multiple types.
 
 ```javascript
 1 / 10; //0.1
