@@ -1,5 +1,5 @@
 ---
-title: "1.1 Basic Syntax"
+title: "1.1 Basics"
 ---
 
 ## Developer console
