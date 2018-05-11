@@ -1,7 +1,5 @@
 ---
-title: "1.5 Object Oriented Programming"
+title: "1.5 Objects"
 ---
 
-## Multiparadigm
-
-## Object-oriented programming
+## Objects

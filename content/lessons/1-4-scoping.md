@@ -245,11 +245,158 @@ for (var i = 0; i < buttons.length; i++) {
 
 After executing the codes:
 
-| Button Index | window's environment | Button environment |
-| ------------ | -------------------- | ------------------ |
-| 0            | [...., `i`: 5]       | [`i2`: 0]          |
-| 1            | [...., `i`: 5]       | [`i2`: 1]          |
-| 2..3         | [...., `i`: 5]       | ...                |
-| 4            | [...., `i`: 5]       | [`i2`: 4]          |
+| Button Index | window's environment | Button onclick environment |
+| ------------ | -------------------- | -------------------------- |
+| 0            | [...., `i`: 5]       | [`i2`: 0]                  |
+| 1            | [...., `i`: 5]       | [`i2`: 1]                  |
+| 2..3         | [...., `i`: 5]       | ...                        |
+| 4            | [...., `i`: 5]       | [`i2`: 4]                  |
 
 ### `let`/`const` keyword
+
+The solution above takes some getting used to. Thanks to ES6, there is an easier
+solution for this by using the block-scoping variable declaration syntax: `let`
+and `const`.
+
+```javascript
+var buttons = document.getElementsByTagName('button');
+for (let i = 0; i < buttons.length; i++) {
+  //i is only available within this block
+  buttons[i].onclick = function(e) {
+    alert(i);
+  };
+}
+
+console.log(i); //Error: i is not defined
+```
+
+<iframe height='280' scrolling='no' title='VxxWoj' src='//codepen.io/hsianghui/embed/VxxWoj/?height=280&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hsianghui/pen/VxxWoj/'>VxxWoj</a> by HsiangHui Lek (<a href='https://codepen.io/hsianghui'>@hsianghui</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+`let` allow copies of the variables to be created within a block and makes it
+only accessible within the scope. Note that we can declare a variable that has
+already been declared in the parent's scope.
+
+```javascript
+let x = 'global';
+{
+  let x = 'parent';
+  {
+    let x = 'inner';
+    console.log(x); //inner
+  }
+  console.log(x); //parent
+}
+console.log(x); //global
+```
+
+`const` like the name suggests allows you to declare constant variables.
+
+```javascript
+const a = 10;
+a = 100; //Not allowed => Error: Assignment to constant variable
+```
+
+```javascript
+const a = 10;
+const a = 20; //Not allowed=> SyntaxError : Identifier 'a' has already been declared
+```
+
+However, you can create `const` with the same name as its parent.
+
+```javascript
+const x = 'global';
+{
+  const x = 'parent';
+  {
+    const x = 'inner';
+    console.log(x); //inner
+  }
+  console.log(x); //parent
+}
+console.log(x); //global
+```
+
+#### What exactly is a `const`?
+
+After seeing the effect of `const` above, it is important explain what exactly
+is the effect of a `const`. Which of the following option(s) do you think is/are
+possible way(s) to describe it:
+
+1. It is a variable where its values is immutable (i.e. its value cannot be
+   changed)
+2. It is a variable where the reference cannot be reassigned
+3. It is like the `final` keyword in Java
+
+Let's look at each case :
+
+**_1. It is a variable where its values is immutable (i.e. its value cannot be
+changed)_**
+
+We will be covering [objects](/1-5-objects) and [arrays](/1-6-arrays) next but
+you will realize that `const` **does not** prevent us from modifying the values
+unless it is a primitive type (e.g. number, string, boolean, etc).
+
+```javascript
+//define an array
+const array = [1, 2, 3];
+
+//append a new element
+array.push(4);
+
+console.log(array); //[1, 2, 3, 4]
+```
+
+```javascript
+//define an object
+const person = { firstName: 'John', lastName: 'Doe' };
+
+//change name of person
+person.firstName = 'Jane';
+
+console.log(person.firstName, person.lastName); //Jane Doe
+```
+
+**_2. It is a variable where the reference cannot be reassigned_**
+
+The examples we see on top is exactly the property of `const`. It does not allow
+us to reassign a new variable/value to it.
+
+**_3. It is like the `final` keyword in Java_**
+
+It seems like `const` acts like the `final` keyword in Java. We are not allow to
+reassign another value to it.
+
+```java
+final int a = 10;
+System.out.println(a); //10
+
+a = 20; //Not allowed => SyntaxError : cannot assign a value to final variable a
+```
+
+Another thing to take note about the `final` keyword in Java is that we do not
+need to initialize its value when you declare the `final` variable. Java does
+ensure that you can only initialize its value once, but you can always do it
+later.
+
+```java
+final int a;
+a = 10;
+System.out.println(a); //10
+```
+
+However, it turns out that `const` is slightly different from the `final`
+keyword in Java. You have to declare and initialize its value in the same
+statement.
+
+```javascript
+const a; //Not allowed => SyntaxError : Missing initializer in const declaration
+a = 100;
+```
+
+So, we conclude that:
+
+1. It is a variable where its values is immutable (i.e. its value cannot be
+   changed) :x:
+2. It is a variable where the reference cannot be reassigned :white_check_mark:
+3. It is like the `final` keyword in Java :x:

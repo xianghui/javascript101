@@ -29,10 +29,21 @@
           ]
         },
         {
-          "title": "Object-Oriented Programming",
+          "title": "Objects",
           "entries": [
             {
               "entry": "./1-5-objects.md"
+            },
+            {
+              "entry": "./1-6-arrays.md"
+            }
+          ]
+        },
+        {
+          "title": "Object-Oriented Programming",
+          "entries": [
+            {
+              "entry": "./1-7-oop.md"
             }
           ]
         }
