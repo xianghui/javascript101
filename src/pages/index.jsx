@@ -1,11 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 
 import SEO from '../components/SEO';
 import config from '../../data/SiteConfig';
 import CtaButton from '../components/CtaButton';
-import Navigation from '../components/Layout/Navigation';
+import Header from '../components/Layout/Header';
 
 class Index extends React.Component {
   render() {
@@ -17,7 +18,20 @@ class Index extends React.Component {
         <SEO postEdges={allSEOMarkdown} />
         <main>
           <IndexHeadContainer>
-            <Navigation />
+            <Img
+              sizes={this.props.data.background.sizes}
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: -1
+              }}
+            />
+            <HeaderContainer>
+              <Header />
+            </HeaderContainer>
             <Hero>
               <img src={config.siteLogo} width="150px" alt="" />
               <h1>{config.siteTitle}</h1>
@@ -51,12 +65,21 @@ class Index extends React.Component {
 
 export default Index;
 
+const HeaderContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 200px;
+  width: 100%;
+`;
+
 const IndexHeadContainer = styled.div`
-  background: ${props => props.theme.headerImg};
   padding: ${props => props.theme.sitePadding};
   text-align: center;
   background-size: cover;
   color: white;
+  overflow: hidden;
+  position: relative;
 `;
 
 const Hero = styled.div`
@@ -123,6 +146,11 @@ export const pageQuery = graphql`
             date
           }
         }
+      }
+    }
+    background: imageSharp(id: { regex: "/coding.jpg/" }) {
+      sizes(maxWidth: 1200) {
+        ...GatsbyImageSharpSizes
       }
     }
   }

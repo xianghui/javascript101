@@ -1,9 +1,6 @@
-import bg from '../../static/coding.jpg';
-
 const theme = {
   // named colors:
   brand: 'black',
-  headerImg: `url(${bg})`,
   accent: '#0a5eb7',
   accentDark: '#35495E',
   lightGrey: '#F6F6F6',
