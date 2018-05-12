@@ -33,9 +33,9 @@ class Index extends React.Component {
               <Header />
             </HeaderContainer>
             <Hero>
-              <img src={config.siteLogo} width="150px" alt="" />
-              <h1>{config.siteTitle}</h1>
-              <h4>{config.siteDescription}</h4>
+              <ImageWithMargin src="/logos/logo-150.png" alt="" />
+              <HeaderText>{config.siteTitle}</HeaderText>
+              <SubHeaderText>{config.siteDescription}</SubHeaderText>
             </Hero>
           </IndexHeadContainer>
           <BodyContainer>
@@ -65,26 +65,40 @@ class Index extends React.Component {
 
 export default Index;
 
+const ImageWithMargin = styled.img`
+  margin-top: 20px;
+`;
+
+const HeaderText = styled.div`
+  margin: 10;
+  font-size: 4rem;
+  font-weight: 600;
+`;
+
+const SubHeaderText = styled.div`
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-top: 20px;
+`;
+
 const HeaderContainer = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  height: 200px;
   width: 100%;
 `;
 
 const IndexHeadContainer = styled.div`
   padding: ${props => props.theme.sitePadding};
   text-align: center;
-  background-size: cover;
   color: white;
   overflow: hidden;
   position: relative;
+  height: 380px;
 `;
 
 const Hero = styled.div`
   padding: 50px 0;
-  background: rgba(0, 0, 0, 0.2);
   color: white;
   text-shadow: 2px 2px 4px #000000;
 
@@ -149,7 +163,7 @@ export const pageQuery = graphql`
       }
     }
     background: imageSharp(id: { regex: "/coding.jpg/" }) {
-      sizes(maxWidth: 1200) {
+      sizes(maxWidth: 1240) {
         ...GatsbyImageSharpSizes
       }
     }
