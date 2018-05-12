@@ -150,8 +150,8 @@ export const pageQuery = graphql`
         }
       }
     }
-    background: imageSharp(id: { regex: "/coding.jpg/" }) {
-      sizes(maxWidth: 1240) {
+    background: imageSharp(id: { regex: "/coding.png/" }) {
+      sizes(maxWidth: 1240, quality: 100) {
         ...GatsbyImageSharpSizes
       }
     }
