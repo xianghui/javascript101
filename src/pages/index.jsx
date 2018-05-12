@@ -34,8 +34,8 @@ class Index extends React.Component {
             </HeaderContainer>
             <Hero>
               <ImageWithMargin src="/logos/logo-150.png" alt="" />
-              <h1>{config.siteTitle}</h1>
-              <h4>{config.siteDescription}</h4>
+              <h1 className="hide-sm">{config.siteTitle}</h1>
+              <h4 className="hide-sm">{config.siteDescription}</h4>
             </Hero>
           </IndexHeadContainer>
           <BodyContainer>
@@ -67,6 +67,20 @@ export default Index;
 
 const ImageWithMargin = styled.img`
   margin-top: 20px;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 0px;
+    height: 30vh;
+    max-height: 150px;
+    max-width: 150px;
+  }
+
+  @media handheld, (max-height: 300px), (orientation: landscape) {
+    margin-top: -5px;
+    height: 20vh;
+    max-height: 150px;
+    max-width: 150px;
+  }
 `;
 
 const HeaderContainer = styled.div`
@@ -83,6 +97,10 @@ const IndexHeadContainer = styled.div`
   overflow: hidden;
   position: relative;
   height: 50vh;
+
+  @media handheld, (max-height: 800px), (orientation: portrait) {
+    height: 40vh;
+  }
 `;
 
 const Hero = styled.div`
@@ -92,6 +110,10 @@ const Hero = styled.div`
 
   & > h1 {
     font-weight: 600;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 30px 0;
   }
 `;
 

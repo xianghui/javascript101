@@ -20,13 +20,19 @@ const NavContainer = styled.div`
     text-decoration: underline;
   }
 
+  @media handheld, (min-height: 300px), (orientation: landscape) {
+    section {
+      margin-bottom: 0px;
+    }
+  }
+
   @media screen and (max-width: 600px) {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     section {
-      margin-bottom: 20px;
+      margin-bottom: 0px;
     }
 
     span {

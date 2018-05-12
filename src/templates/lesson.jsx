@@ -51,6 +51,10 @@ const BodyGrid = styled.div`
   grid-template-rows: 75px 1fr;
   grid-template-columns: 300px 1fr;
 
+  @media handheld, (min-height: 300px), (orientation: landscape) {
+    grid-template-rows: 55px 1fr;
+  }
+
   @media screen and (max-width: 600px) {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Navigation from './Navigation'
+import React from 'react';
+import styled from 'styled-components';
+import Navigation from './Navigation';
 
 class MainHeader extends React.Component {
   render() {
@@ -8,7 +8,7 @@ class MainHeader extends React.Component {
       <SiteContainer>
         <Navigation />
       </SiteContainer>
-    )
+    );
   }
 }
 
@@ -18,6 +18,14 @@ const SiteContainer = styled.div`
   justify-content: space-between;
   background: ${props => props.theme.brand};
   padding: 25px;
-`
 
-export default MainHeader
+  @media screen and (max-width: 600px) {
+    padding: 15px;
+  }
+
+  @media handheld, (min-height: 300px), (orientation: landscape) {
+    padding: 15px;
+  }
+`;
+
+export default MainHeader;
