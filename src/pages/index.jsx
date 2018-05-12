@@ -34,8 +34,8 @@ class Index extends React.Component {
             </HeaderContainer>
             <Hero>
               <ImageWithMargin src="/logos/logo-150.png" alt="" />
-              <HeaderText>{config.siteTitle}</HeaderText>
-              <SubHeaderText>{config.siteDescription}</SubHeaderText>
+              <h1>{config.siteTitle}</h1>
+              <h4>{config.siteDescription}</h4>
             </Hero>
           </IndexHeadContainer>
           <BodyContainer>
@@ -69,18 +69,6 @@ const ImageWithMargin = styled.img`
   margin-top: 20px;
 `;
 
-const HeaderText = styled.div`
-  margin: 10;
-  font-size: 4rem;
-  font-weight: 600;
-`;
-
-const SubHeaderText = styled.div`
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin-top: 20px;
-`;
-
 const HeaderContainer = styled.div`
   position: absolute;
   left: 0;
@@ -94,7 +82,7 @@ const IndexHeadContainer = styled.div`
   color: white;
   overflow: hidden;
   position: relative;
-  height: 380px;
+  height: 50vh;
 `;
 
 const Hero = styled.div`
