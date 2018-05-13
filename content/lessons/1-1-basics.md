@@ -67,3 +67,7 @@ function foo1() {
 
 console.log(foo1()); //5
 ```
+
+<div class='text-right'>
+  <a href="/1-2-variables">Next: 1.2 Variables</a>
+</div>

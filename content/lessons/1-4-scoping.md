@@ -400,3 +400,13 @@ So, we conclude that:
    changed) :x:
 2. It is a variable where the reference cannot be reassigned :white_check_mark:
 3. It is like the `final` keyword in Java :x:
+
+<div>
+  <div class='text-left'>
+    <a href="/1-3-functions">Prev: 1.3 Functions</a>
+  </div>
+
+  <div class='text-right'>
+    <a href="/1-5-objects">Next: 1.5 Objects</a>
+  </div>
+</div>

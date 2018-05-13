@@ -390,3 +390,13 @@ Specifically:
 * function can be passed as argument (function values)
 * function can be returned from a function (higher order function)
 * function can be assigned to a variable
+
+<div>
+  <div class='text-left'>
+    <a href="/1-2-variables">Prev: 1.2 Variables</a>
+  </div>
+
+  <div class='text-right'>
+    <a href="/1-4-scoping">Next: 1.4 Scoping</a>
+  </div>
+</div>

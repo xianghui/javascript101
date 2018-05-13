@@ -107,3 +107,13 @@ Infinity + Infinity; //Infinity
 Infinity * Infinity; //Infinity
 Infinity / Infinity; //NaN
 ```
+
+<div>
+  <div class='text-left'>
+    <a href="/1-1-basics">Prev: 1.1 Basics</a>
+  </div>
+
+  <div class='text-right'>
+    <a href="/1-3-functions">Next: 1.3 Functions</a>
+  </div>
+</div>

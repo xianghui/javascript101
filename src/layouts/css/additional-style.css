@@ -12,3 +12,11 @@ li {
     display: none;
   }
 }
+
+.text-right {
+  float: right;
+}
+
+.text-left {
+  float: left;
+}
