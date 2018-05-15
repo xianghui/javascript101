@@ -7,7 +7,8 @@ title: "1.2 Variables"
 Variables are declared using the `var` keyword. JS is dynamically typed (i.e.
 type of variables can change at run time). For example, you can assign an
 integer to a variable and along the way assign a string to the same variable
-(thus changing the type of the variable to string type).
+(thus changing the type of the variable to string type). The `typeof` is a
+special operator for getting the type of a variable (in string format).
 
 ```javascript
 var a = 5;

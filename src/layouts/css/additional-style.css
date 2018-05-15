@@ -26,4 +26,5 @@ pre[class*='language-text'] {
   color: #d73737;
   background: #fefbec;
   box-shadow: none;
+  font-size: inherit;
 }

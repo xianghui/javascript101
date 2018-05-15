@@ -3,7 +3,3 @@
 </div>
 
 #### This site is using the [Gatsby Starter Docs] template(https://github.com/ericwindmill/gatsby-starter-docs)
-
-### TODOS
-
-* Change the header image to a smaller one
