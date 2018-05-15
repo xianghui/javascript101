@@ -20,3 +20,10 @@ li {
 .text-left {
   float: left;
 }
+
+:not(pre) > code[class*='language-text'],
+pre[class*='language-text'] {
+  color: #d73737;
+  background: #fefbec;
+  box-shadow: none;
+}
