@@ -373,6 +373,77 @@ if (obj2.hasOwnProperty('f2')) {
 }
 ```
 
+## Object literal notation
+
+JS provides a object literal notation that you can use to define and create
+objects. This is often preferred as it makes the codes much shorter and cleaner.
+
+```javascript
+var redCircle = {
+  radius: 3,
+  color: 'red',
+  calculateArea: function() {
+    return Math.PI * this.radius * this.radius;
+  }
+};
+
+//{radius: 3, color: "red", calculateArea: ƒ}
+console.log(redCircle);
+console.log(redCircle.calculateArea());
+```
+
+The same rules from before applies for the object literal notation.
+
+```javascript
+var circle = {
+  radius: 3,
+  color: 'red'
+};
+
+Object.prototype.foo = function() {
+  console.log('foo');
+};
+
+circle.foo(); //foo
+```
+
+```javascript
+var circle = {
+  radius: 3,
+  color: 'red'
+};
+
+//Error: this is not allowed => cannot set property
+circle.prototype.foo = function() {
+  console.log('circle::foo');
+};
+```
+
+## Deeper prototype chain
+
+So far, our examples have never gone beyond 2 level of inheritance. In OOP,
+sometimes we want to extend a superclass (which probably was extending another
+superclass). ECMAScript 5 (ES5) comes with a `Object.create()` method that
+allows us to have "deeper" prototype chain.
+
+```javascript
+var grandgrandparent = { location4: 'grandgrandparent' };
+var grandparent = Object.create(grandgrandparent);
+grandparent.location3 = 'grantparent';
+
+var parent = Object.create(grandparent);
+parent.location2 = 'parent';
+
+var child = Object.create(parent);
+child.location1 = 'child';
+
+console.log(child);
+console.log(child.location1); //child
+console.log(child.location2); //parent
+console.log(child.location3); //grandparent
+console.log(child.location4); //grantgrandparent
+```
+
 <div>
   <div class='text-left'>
     <a href="/1-4-scoping">Prev: 1.4 Scoping</a>
