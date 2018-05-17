@@ -5,7 +5,7 @@ title: "1.3 Functions"
 ## Function declaration
 
 Function is defined using the `function` keyword. Some functions can return a
-value while others do actions
+value while others do actions without returning a value.
 
 ```javascript
 function sum(num1, num2) {
@@ -17,8 +17,7 @@ var sum = function(num1, num2) {
   return num1 + num2;
 };
 
-var n1 = 1,
-  n2 = 2;
+var n1 = 1, n2 = 2;
 var result = sum(1, 2); //3
 ```
 
