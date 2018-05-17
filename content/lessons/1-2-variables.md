@@ -46,11 +46,11 @@ typeof f; //function
 ## Undefined vs Not defined
 
 Other than assigning proper values to a variable, there are also other special
-values (`null`, `undefined`, `not defined` ) in Javascript. Note that
-**undefined** is not the same as **not defined**. Undefined is when a variable
+values (`null` and `undefined`) in Javascript. Note that **undefined** is not
+the same as **not defined**. A variable takes on the value of **Undefined** it
 is declared but not assigned any value. Whereas, if you try to access a variable
-that is not declared, an error is thrown indicating that the variable is not
-defined (or not declared).
+that is not declared, an **error** is thrown indicating that the variable is
+`not defined` (or not declared).
 
 ```javascript
 var c = null;
@@ -70,7 +70,9 @@ typeof (undefined + 'abc'); //string
 
 Javascript does auto type conversion when you assign a value to a variable. It
 tries its best to determine the type of your variable/expression. JS also
-performs type coercion when an expression contains multiple types.
+performs type coercion when an expression contains multiple types. You are allow
+to concatenate different data types (e.g. a string with a number) like in the
+case of Java.
 
 ```javascript
 1 / 10; //0.1
@@ -91,8 +93,8 @@ Number('100') + 200; //300
 Number(' '); //0 (same as Number(""))
 ```
 
-Like with most programming languages, when handling numeric arithmetic, NaN
-(**N**ot **a** **N**umber) and Infinity cases are usually quite weird.
+Like with most programming languages, when handling numeric arithmetic, `NaN`
+(**N**ot **a** **N**umber) and `Infinity` cases are usually quite weird.
 
 ```javascript
 undefined + 1; //NaN

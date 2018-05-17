@@ -43,7 +43,7 @@ class Index extends React.Component {
             <p>
               This site contains collection of Javascript code snippets/notes.
               The notes were written with the assumption that you have prior
-              programming knownledge.
+              programming knowledge (e.g. in Java).
               <br />
               <br />Created using{' '}
               <a
@@ -53,7 +53,7 @@ class Index extends React.Component {
               >
                 GatsbyJs
               </a>{' '}
-              as a way to help me get used to writing in markdowns
+              and Markdowns
             </p>
             <CtaButton to={'/1-1-basics'}>Get started</CtaButton>
           </BodyContainer>
