@@ -5,10 +5,10 @@ title: "1.2 Variables"
 ## Variable declaration and assignment
 
 Variables are declared using the `var` keyword. JS is dynamically typed (i.e.
-type of variables can change at run time). For example, you can assign an
+the type of variables can change at run time). For example, you can assign an
 integer to a variable and along the way assign a string to the same variable
-(thus changing the type of the variable to string type). The `typeof` is a
-special operator for getting the type of a variable (in string format).
+(thus changing the type of the variable to string type). `typeof` is a special
+operator for getting the type of a variable (in string format).
 
 ```javascript
 var a = 5;
@@ -24,8 +24,8 @@ var n1, n2;
 
 JS has 6 primitive data types: `undefined`, `null`, `number`, `string`,
 `boolean`, and `symbol`. You can choose to enclose strings with single quotes
-(`'`) or double quotes (`"`). There is also the `object` type for complex type.
-You can also assign functions to a variable.
+(`'`) or double quotes (`"`) - just use matching type of quotes. There is also
+the `object` type for complex type. You can also assign functions to a variable.
 
 ```javascript
 typeof 1; //number
@@ -47,10 +47,10 @@ typeof f; //function
 
 Other than assigning proper values to a variable, there are also other special
 values (`null` and `undefined`) in Javascript. Note that **undefined** is not
-the same as **not defined**. A variable takes on the value of **Undefined** it
-is declared but not assigned any value. Whereas, if you try to access a variable
-that is not declared, an **error** is thrown indicating that the variable is
-`not defined` (or not declared).
+the same as **not defined**. A variable takes on the value of **undefined** if
+it is declared but not assigned any value. Whereas, if you try to access a
+variable that is not declared, an error is thrown indicating that the variable
+is `not defined` (or not declared).
 
 ```javascript
 var c = null;

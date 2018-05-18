@@ -14,9 +14,9 @@ var now = new Date();
 console.log(now);
 ```
 
-Before ES6, object definitions are defined using functions. However, these are
-special function called function constructor. They are meant to be called using
-the `new` keyword instead of called as if they were normal functions.
+Object definitions can be defined using function constructor. The objects are
+can then be constructed using the `new` keyword (instead of being called as if
+they were normal functions).
 
 ```javascript
 //function constructor
@@ -40,7 +40,7 @@ console.log(typeof notObject); //undefined
 We have seen the `typeof` operator
 [previously](/1-2-variables#variable-declaration-and-assignment). The
 `instanceof` operator test the type of the object. Specifically, this is
-achieved by going up the the prototype chain of the object and checking for
+achieved by going up the the prototype chain of the object and checking for a
 match in the constructor field. We will discuss
 [prototypal inheritance](#prototypal-inheritance) shortly.
 
@@ -48,14 +48,15 @@ match in the constructor field. We will discuss
 
 ## Attributes and methods
 
-As seen earlier, the `this` keyword can be used to assign instance attributes
-and methods (e.g. `this.address` and `this.setSGAddress`). If you are familiar
-with Java, it is similar to the _public_ access rights.
+As seen earlier, the `this` keyword can be used to get the reference to the
+current object instance. This is helpful for defining attributes and methods
+(e.g. `this.address` and `this.setSGAddress`) of the object. If you are familiar
+with Java, it is similar to the **public** access rights.
 
-There is no specific syntax for _private_ access rights of attributes but it is
-still possible to achieve the same kind of information hiding. For example, in
-the following example, `name` and `age` cannot be accessed directly outside this
-class. We can then define getters (accessors) and setters (mutators) to
+There is no specific syntax for **private** access rights of attributes but it
+is still possible to achieve the same kind of information hiding. For example,
+in the following example, `name` and `age` cannot be accessed directly outside
+this class. We can then define getters (accessors) and setters (mutators) to
 access/manipulate the attributes accordingly.
 
 ```javascript
@@ -93,8 +94,8 @@ console.log(john.address); //Clementi Singapore
 ```
 
 However, unlike other strongly typed languages, we can add properties
-(attributes/methods) to an object even after it has been declared. Each object
-has its own copy of a property.
+(attributes/methods) to an object during runtime. Each object can have its own
+copy of properties.
 
 ```javascript
 function Shape() {}
@@ -114,8 +115,8 @@ console.log(circle.calculateArea()); //Math.PI * 3 * 3
 
 It is also possible to define properties using the `['PROPERTY_NAME]` syntax.
 Properties defined this way can contain spaces. To access the property, we can
-then use the `.PROPERTY_NAME` or `['PROPERTY_NAME]` syntax. If a property is
-defined using `[ ]`, the property can contain spaces.
+then use the `.PROPERTY_NAME` or `['PROPERTY_NAME]` syntax. Properties defined
+using the `[ ]` syntax can contain spaces.
 
 ```javascript
 function Shape() {}
@@ -135,9 +136,9 @@ cube['top color'] = 'yellow';
 console.log(cube['top color']); //yellow
 ```
 
-Note that it is also possible to replace existing method definition. Javascript
-will not prevent you from doing this by default, so you should be careful not to
-accidentally reassign methods unncessarily/wrongly.
+Note that it is also possible to replace an existing method definition.
+Javascript will not prevent you from doing this by default, so you should be
+careful not to accidentally reassign methods unncessarily/wrongly.
 
 ```javascript
 //continue from above example
@@ -159,7 +160,8 @@ console.log(cube['calculateVolume']);
 ## Prototypal inheritance
 
 To view all the properties associated with an object, we can do a
-`console.log(obj)` and expand the nodes to see the details.
+`console.log(obj)` and expand the nodes in the developer console to see the
+details.
 
 ![](images/obj1.png)
 
@@ -204,7 +206,7 @@ console.log(yellowCircle.calculateArea === blueCircle.calculateArea); //true
 
 Instead, the better way is to be able to define the set of properties such that
 all instances of that type of object would inherit from. In JS, we use
-prototypal inheritance to achieve this.
+**prototypal inheritance** to achieve this.
 
 ```javascript
 function Shape() {}
@@ -267,10 +269,19 @@ console.log(jane.MAX_AGE); //99
 It is more important to understand how JS resolve the properties. When trying to
 access a property _**p**_, it will try to find _**p**_ in its own list of
 properties. If _**p**_ cannot be found from its own properties, it will then go
-to its prototype (`__proto__` property (parent)) to and try to access _**p**_.
-If _**p**_ still cannot be find, it will repeat this process by access the
-(`__proto__` property (parent's parent)), etc. Thus, the term **prototype
-chain**.
+to its prototype (`__proto__`) property to try to access _**p**_, and the
+process repeat by going up the **prototype chain**. This is possible because the
+`__proto__` property also contains its parent type. For example, all object
+"inherits" from the Object type.
+
+So, the resolution process will always be trying to access the properties within
+the current set of properties, then to its the list of properties in
+`__proto__`, then to the parent's list of properties, and the parent's
+`__proto__`, etc.
+
+If finally, the property name cannot be found after going up the prototype
+chain, it will show undefined for variables (and an not a function TypeError if
+trying to invoke as a function).
 
 ```javascript
 function MyObj() {}
@@ -305,8 +316,8 @@ obj3.f2(); //Object prototype f2
 
 ![](images/obj4.png)
 
-There is a `hasOwnProperty()` method that returns true when the object has the
-specified property in its own list properties.
+Every object has a special `hasOwnProperty()` method that returns true when the
+object has the specified property in its own list of properties.
 
 ```javascript
 //Here's a simulation of the process that is performed by the JS engine

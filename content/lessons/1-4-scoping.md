@@ -6,7 +6,7 @@ title: "1.4 Scoping"
 
 Unlike most programming languages (such as C/Java) which use **Block Scoping**,
 Javascript uses both **Function Scoping** and **Block Scoping**. Scoping is
-relevant when dealing about variable (or function) declaration.
+relevant when dealing with variable (or function) declarations.
 
 ## Block scoping
 
@@ -77,7 +77,7 @@ foo();
 ```
 
 Nested functions "inherit" variables/functions from its parent's scope. This is
-achieved through **Closure**. Closure is combination of a function and its
+achieved through **closure**. Closure is combination of a function and its
 lexical environment (_allows us to map identifiers to variables_). Some
 variables are created in the local environment, some are referencing the parent
 environment.
@@ -154,8 +154,8 @@ foo(); //def
 console.log(x); //def
 ```
 
-When we define variables or functions in the global scope, note that there will
-be an entry in the global namespace (`window` object). However, some of these
+When we define variables or functions in the global scope, note that the entries
+will be found in the global namespace (`window` object). However, some of these
 variables or functions are only declared and used once. For example:
 
 ```javascript
@@ -197,7 +197,7 @@ negative implications:
 
 A common way to address the above problem is to use an **Immediately Invoked
 Function Expression (IIFE)**. The idea like the name suggest is to 1) define a
-function to wrap all all these codes in a function and 2) invoke it immediately.
+function to wrap all these codes in a function and 2) invoke it immediately.
 
 ```javascript
 //define a function
@@ -228,11 +228,10 @@ console.log(window);
 
 One of the classic pitfall/gotcha regarding **function scoping** is that it
 might behave differently from what we think it should (especially if you have
-prior programming language in other languages that are using block scoping).
-Consider the following example html code example with 5 buttons. In each HTML
-button, we can assign an `onclick` handler, which we hope to show the button
-index. It turns on that when you click on any of the button, it always show 5
-(instead of the respective index) :angry:.
+prior programming knowledge). Consider the following html code example with 5
+buttons. In each HTML button, we can assign an `onclick` handler, which we hope
+to show the button index. It turns on that when you click on any of the button,
+it always show 5 (instead of the respective index) :angry:.
 
 ```html
 <button>Button 0</button>
@@ -249,7 +248,7 @@ index. It turns on that when you click on any of the button, it always show 5
 
 Recall the concept of **function scoping**. A closure is created when a function
 is declared. On the global scope, the variables are defined in the web browser's
-window object. When we declare the variable `i` (`var i`), `i` is declared and
+`window` object. When we declare the variable `i` (`var i`), `i` is declared and
 assigned the value of 0 (`var i = 0`) at the start. For each iteration, we
 declare a new function and assign to the `onclick` handler of each button. When
 we click on the button, the respective `onclick` handler will be triggered. In
@@ -273,11 +272,11 @@ The reason why the value 5 is shown for all the button is because during
 runtime, the final value of `i` will be 5 (in which case it will break out of
 the for loop).
 
-| Iteration | window's environment | description                                                                                   |
-| --------- | -------------------- | --------------------------------------------------------------------------------------------- |
-| 0         | [...., `i`: 0]       | `i` is declared and assigned the value of 0                                                   |
-| 1 ... 4   | [...., `i`: 1]       | value of `i` in the window's environment changes from 0 to 4                                  |
-| 5         | [...., `i`: 5]       | value of `i` changes to 5 and `i < buttons.length` evaluates to `false` and break out of loop |
+| Iteration | window's env   | description                                                                                   |
+| --------- | -------------- | --------------------------------------------------------------------------------------------- |
+| 0         | [...., `i`: 0] | `i` is declared and assigned the value of 0                                                   |
+| 1 ... 4   | [...., `i`: 1] | value of `i` in the window's environment changes from 0 to 4                                  |
+| 5         | [...., `i`: 5] | value of `i` changes to 5 and `i < buttons.length` evaluates to `false` and break out of loop |
 
 #### How can we resolve this?
 
@@ -289,10 +288,10 @@ in this local environment is mapped to the value of the first function parameter
 (**pass by value**). This is to ensure that when we are assigning a function to
 each of the button onclick handler during runtime, there will be a different
 copy of `i` created for each iteration - that is the purpose of
-`function(i){ ... }(i);`.
+`function(i){ ... }(i);`. This is similar to IIFE except that we supply a value.
 
 Since each button onclick handler requires a function declaration, we then need
-to return a `function(e){ ... }` like before
+to return a `function(e){ ... }` like before.
 
 <iframe height='350' scrolling='no' title='Looping closure' src='//codepen.io/hsianghui/embed/deZZEe/?height=350&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hsianghui/pen/deZZEe/'>Looping closure</a> by HsiangHui Lek (<a href='https://codepen.io/hsianghui'>@hsianghui</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -319,12 +318,12 @@ for (var i = 0; i < buttons.length; i++) {
 
 After executing the codes:
 
-| Button Index | window's environment | Button onclick environment |
-| ------------ | -------------------- | -------------------------- |
-| 0            | [...., `i`: 5]       | [`i2`: 0]                  |
-| 1            | [...., `i`: 5]       | [`i2`: 1]                  |
-| 2..3         | [...., `i`: 5]       | ...                        |
-| 4            | [...., `i`: 5]       | [`i2`: 4]                  |
+| Button Index | window's env   | Button onclick's env |
+| ------------ | -------------- | -------------------- |
+| 0            | [...., `i`: 5] | [`i2`: 0]            |
+| 1            | [...., `i`: 5] | [`i2`: 1]            |
+| 2..3         | [...., `i`: 5] | ...                  |
+| 4            | [...., `i`: 5] | [`i2`: 4]            |
 
 ### `let`/`const` keyword
 
@@ -347,9 +346,9 @@ console.log(i); //Error: i is not defined
 <iframe height='280' scrolling='no' title='VxxWoj' src='//codepen.io/hsianghui/embed/VxxWoj/?height=280&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hsianghui/pen/VxxWoj/'>VxxWoj</a> by HsiangHui Lek (<a href='https://codepen.io/hsianghui'>@hsianghui</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-`let` allow copies of the variables to be created within a block and makes it
-only accessible within the scope. Note that we can declare a variable that has
-already been declared in the parent's scope.
+`let` allow copies of the variables to be created within a block `{ }` and makes
+it only accessible within the scope. Note that we can declare a variable that
+has already been declared in the parent's scope.
 
 ```javascript
 let x = 'global';
@@ -393,9 +392,9 @@ console.log(x); //global
 
 #### What exactly is a `const`?
 
-After seeing the effect of `const` above, it is important explain what exactly
-is the effect of a `const`. Which of the following option(s) do you think is/are
-possible way(s) to describe it:
+After seeing the effect of `const` above, it is important to examine what
+exactly is a `const`. Which of the following option(s) do you think is/are
+possible way(s) to describe it?
 
 1.  It is a variable where its values is immutable (i.e. its value cannot be
     changed)
@@ -448,10 +447,10 @@ System.out.println(a); //10
 a = 20; //Not allowed => SyntaxError : cannot assign a value to final variable a
 ```
 
-Another thing to take note about the `final` keyword in Java is that we do not
-need to initialize its value when you declare the `final` variable. Java does
-ensure that you can only initialize its value once, but you can always do it
-later.
+Something to take note about the `final` keyword in Java is that we do not need
+to initialize its value when you declare the `final` variable. Java does ensure
+that you can only initialize its value once, but you can always initialize its
+value later.
 
 ```java
 final int a;
@@ -459,16 +458,15 @@ a = 10;
 System.out.println(a); //10
 ```
 
-However, it turns out that `const` is slightly different from the `final`
-keyword in Java. You have to declare and initialize its value in the same
-statement.
+`const` on the other hand, works slightly different from the `final` keyword in
+Java. You have to declare and initialize its value in the same statement.
 
 ```javascript
 const a; //Not allowed => SyntaxError : Missing initializer in const declaration
 a = 100;
 ```
 
-So, we conclude that:
+So, we conclude the following:
 
 1.  It is a variable where its values is immutable (i.e. its value cannot be
     changed) :x:

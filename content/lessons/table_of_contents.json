@@ -42,13 +42,13 @@
       ]
     },
     {
-      "title": "2. Main Chapter",
+      "title": "2. ECMAScript 6",
       "chapters": [
         {
-          "title": "2.1 Subchapter",
+          "title": "ES6 Enhancements",
           "entries": [
             {
-              "entry": "./lesson_two.md"
+              "entry": "./2-1-es6-enhancements.md"
             }
           ]
         }

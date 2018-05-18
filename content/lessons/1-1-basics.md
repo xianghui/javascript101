@@ -43,9 +43,8 @@ with semicolons. You should note that semicolons are however required for some
 situations:
 
 * writing codes in a single line (e.g. `var a = 10; var b = 20;`)
-* return statement from a function. You can enclose with `( )` your return value
-  is the next line (quite common when coding with
-  <a href="https://reactjs.org/" target="_blank">ReactJS</a>)
+* return statement from a function. You can enclose your return value in `( )`.
+  This is quite common when coding with <a href="https://reactjs.org/" target="_blank">ReactJS</a>
 
 ```javascript
 function foo() {

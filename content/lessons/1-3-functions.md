@@ -4,7 +4,7 @@ title: "1.3 Functions"
 
 ## Function declaration
 
-Function is defined using the `function` keyword. Some functions can return a
+Functions are defined using the `function` keyword. Some functions can return a
 value while others do actions without returning a value.
 
 ```javascript
@@ -24,7 +24,7 @@ var result = sum(1, 2); //3
 Unlike strongly typed languages like Java, we do not need to specify any type
 for the function parameters (or `var`). Function parameters can be thought as
 declared with `var PARAMETER_NAME`. When we invoke a function, we are allowed to
-not specify values for the function parameters, but note that the function
+omit the values for the function parameters, but note that the function
 parameters will match by position from left to right. So, if you want a variable
 to be optional, you probably want to put it on the right side. If not, you could
 also use `undefined` as the parameter value, but your codes might look abit
@@ -82,9 +82,9 @@ bar();
 
 ## Hoisting
 
-Javascript has a special behavior call **hoisting** which moves (variable or
+Javascript has a special behavior called **hoisting** which moves (variable or
 function) declarations to the top. If we were to change the above example to the
-following, you will realize that the browser no longer show the not defined
+following, you will realize that the browser no longer shows the not defined
 error. Instead, `y` is now undefined. It might look strange especially for those
 who are familiar with strongly typed languages like Java. The reason this is
 happening is because JS will move the variable declaration (`var y`) to the top
@@ -193,8 +193,8 @@ test(false); // test(): false
 
 Alternatively, there is a shorter syntax but works slightly differently for
 boundary cases. Similar to java, `||` is a **short circuit evaluation operator**
-which will stop once we are able to determine a value (i.e. if the left hand
-side value is not false, it will stop evaluation)
+which will stop evaluation once we are able to determine a value (i.e. if the left
+hand side value is true, it will stop evaluation).
 
 ```javascript
 function test1(x) {
@@ -259,8 +259,8 @@ contents inside the object (e.g. a property of the object). However, again the
 function does not have the reference to the original variable so it cannot
 initialize the variable to point to another object (or another value). This is
 similar to the case for Java. For example, if you invoke a method and supply an
-ArrayList, you can change the contents of the ArrayList, but you cannot assign it
-to another value.
+ArrayList, you can change the contents of the ArrayList, but you cannot assign
+it to another value.
 
 ```javascript
 var globalObj = { var1: 'OLD_VALUE' };
@@ -299,8 +299,8 @@ System.out.println(arr.size()); //0
 
 ## Nested functions
 
-It is possible to define functions inside a function and use it inside a
-function.
+It is possible to define functions inside a function and use them inside
+functions.
 
 ```javascript
 function areaCircle(radius) {
@@ -378,7 +378,7 @@ checkPassword('SECRET', success, failure); //success!
 checkPassword('WRONG', success, failure); //failure!
 ```
 
-Functions are **First Class Citizen** in Javascript.
+Functions are **First Class Citizens** in Javascript.
 
 > _In programming language design, a first-class citizen (also type, object,
 > entity, or value) in a given programming language is an entity which supports
