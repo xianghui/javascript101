@@ -4,15 +4,14 @@ title: "1.4 Scoping"
 
 ## Scoping
 
-Unlike most programming languages (such as C/Java) which is using **Block
-Scoping**, Javascript consists of both **Function Scoping** and **Block
-Scoping**. Scoping is relevant when dealing about variable (or function)
-declaration.
+Unlike most programming languages (such as C/Java) which use **Block Scoping**,
+Javascript uses both **Function Scoping** and **Block Scoping**. Scoping is
+relevant when dealing about variable (or function) declaration.
 
 ## Block scoping
 
 Depending on the language, blocks are defined using different syntax. For
-example, in Java/C/Javascript, a block is created using { curly brackets }.
+example, in Java/C/Javascript, a block is created using `{` curly brackets `}`.
 Python uses whitespaces for defining blocks.
 
 ```java
@@ -27,7 +26,7 @@ System.out.println(x); //x is not defined
 
 ## Function scoping
 
-In JS, we have something called **function scoping** (i.e. a new scope is
+In JS, we have something called **function scoping** (i.e. a new scope is only
 created inside a function).
 
 ```javascript
@@ -45,8 +44,8 @@ function foo() {
 ### `var` keyword
 
 As seen in previous examples, variables are defined using the `var` keyword.
-`let` and `const` were introduced later on in ES6 (ECMAScript 6), which allows
-us to define variables with block scoping (to be elaborated later).
+`let` and `const` were introduced later on in ES6, which allows us to define
+variables with block scoping (to be elaborated shortly).
 
 ```javascript
 //Javascript Example
@@ -79,7 +78,7 @@ foo();
 
 Nested functions "inherit" variables/functions from its parent's scope. This is
 achieved through **Closure**. Closure is combination of a function and its
-lexical (_allows us to map identifiers to variables_) environment. Some
+lexical environment (_allows us to map identifiers to variables_). Some
 variables are created in the local environment, some are referencing the parent
 environment.
 
@@ -105,8 +104,13 @@ function parent() {
   function child() {
     //env3 = [c: 3], env2
     var c = 3;
-    //can't find in local env3 => lookup(env2, "a")
-    //can't find in env2 => lookup(env1, "a")
+
+    //when trying to access a:
+    //can't find in local environment (env3)
+    //       try parent's environment (env2)
+    //can't find in parent'e environment (env2)
+    //       try parent's parent's environment (env1)
+    //etc
     console.log(a); //1
   }
   child();
@@ -125,8 +129,8 @@ console.log(window.somevar); //abc
 ```
 
 One thing to be careful is that when declaring variables in functions, if you do
-not use the `var`, `const`, or `let` keyword, the variable will be declared a
-global scope instead.
+not use the `var`, `const`, or `let` keyword, the variable will be declared in
+the global scope/namespace instead.
 
 ```javascript
 function foo() {
@@ -148,6 +152,76 @@ function foo() {
 
 foo(); //def
 console.log(x); //def
+```
+
+When we define variables or functions in the global scope, note that there will
+be an entry in the global namespace (`window` object). However, some of these
+variables or functions are only declared and used once. For example:
+
+```javascript
+//code snippet to put in the current date/time
+//to a div
+var now = new Date();
+
+var yesterday = new Date();
+yesterday.setDate(now.getDate() - 1);
+
+function formatDate(date) {
+  return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay();
+}
+
+var element1 = document.getElementById('dateField1');
+element1.innerText = formatDate(now);
+
+var element2 = document.getElementById('dateField2');
+element2.innerText = formatDate(yesterday);
+
+console.log(window);
+//we will now have 5 additional properties:
+//now, yesterday, formatDate, element1, element2
+```
+
+The situation that we have above is also know as polluting the global namespace.
+While this often does not affect the behavior of our page/program, it has some
+negative implications:
+
+* Variables/functions which will not be used later cannot be garbage collected,
+  thus leads to wastage to browser memory
+* Possibly slower performance (due to more memory consumption)
+* Potential unexpected behaviors (e.g. if a function tries to access a variable
+  that is not defined in its scope and end up using the variable defined in the
+  window scope, thus resulting in some output when it is supposed to show an
+  error instead)
+
+### Immediately Invoked Function Expression (IIFE)
+
+A common way to address the above problem is to use an **Immediately Invoked
+Function Expression (IIFE)**. The idea like the name suggest is to 1) define a
+function to wrap all all these codes in a function and 2) invoke it immediately.
+
+```javascript
+//define a function
+//notice that this function does not have a name so it is not added as a property
+//to the window object
+//we invoke it immediately by adding ()
+(function() {
+  var now = new Date();
+  var yesterday = new Date();
+  yesterday.setDate(now.getDate() - 1);
+
+  function formatDate(date) {
+    return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay();
+  }
+
+  var element1 = document.getElementById('dateField1');
+  element1.innerText = formatDate(now);
+
+  var element2 = document.getElementById('dateField2');
+  element2.innerText = formatDate(yesterday);
+})();
+
+console.log(window);
+//we will not have the additional properties now
 ```
 
 ### Classic loop pitfall
@@ -214,8 +288,8 @@ function parameter so that `i` will be a variable in the local environment. `i`
 in this local environment is mapped to the value of the first function parameter
 (**pass by value**). This is to ensure that when we are assigning a function to
 each of the button onclick handler during runtime, there will be a different
-copy of `i` created for each iteration - that is the purpose of `function(i){
-... }(i);`.
+copy of `i` created for each iteration - that is the purpose of
+`function(i){ ... }(i);`.
 
 Since each button onclick handler requires a function declaration, we then need
 to return a `function(e){ ... }` like before
@@ -323,10 +397,10 @@ After seeing the effect of `const` above, it is important explain what exactly
 is the effect of a `const`. Which of the following option(s) do you think is/are
 possible way(s) to describe it:
 
-1. It is a variable where its values is immutable (i.e. its value cannot be
-   changed)
-2. It is a variable where the reference cannot be reassigned
-3. It is like the `final` keyword in Java
+1.  It is a variable where its values is immutable (i.e. its value cannot be
+    changed)
+2.  It is a variable where the reference cannot be reassigned
+3.  It is like the `final` keyword in Java
 
 Let's look at each case :
 
@@ -396,10 +470,10 @@ a = 100;
 
 So, we conclude that:
 
-1. It is a variable where its values is immutable (i.e. its value cannot be
-   changed) :x:
-2. It is a variable where the reference cannot be reassigned :white_check_mark:
-3. It is like the `final` keyword in Java :x:
+1.  It is a variable where its values is immutable (i.e. its value cannot be
+    changed) :x:
+2.  It is a variable where the reference cannot be reassigned :white_check_mark:
+3.  It is like the `final` keyword in Java :x:
 
 <div>
   <div class='text-left'>

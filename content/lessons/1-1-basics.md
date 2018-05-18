@@ -5,10 +5,10 @@ title: "1.1 Basics"
 ## Developer console
 
 To get started with learning Javascript (JS), probably the easiest way is to use
-the developer console in your web browser. You can access the developer console,
-press F12 (windows/chrome, firefox) or Cmd+Opt+J (mac/chrome).
+the developer console in your web browser. You can access the developer console by
+pressing F12 (windows/chrome, firefox) or Cmd+Opt+J (mac/chrome).
 
-One of the most common command that you will use to debug your program is
+One of the most common commands that you will use to debug your program is
 `console.log`. It is equivalent to the `System.out.println()` in Java. It will
 print out the results in the developer console.
 

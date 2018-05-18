@@ -67,7 +67,7 @@ foo1(7, undefined, 8);
 assigned a value, whereas **not defined** is an error that is thrown when that
 variable is declared. When you try to access a variable that is not declared (as
 the function parameters or inside the function or in its parent's scope), we get
-a not defined error.
+a **not defined** error.
 
 ```javascript
 function bar(x) {
@@ -85,7 +85,7 @@ bar();
 Javascript has a special behavior call **hoisting** which moves (variable or
 function) declarations to the top. If we were to change the above example to the
 following, you will realize that the browser no longer show the not defined
-error. Instead, y is now undefined. It might look strange especially for those
+error. Instead, `y` is now undefined. It might look strange especially for those
 who are familiar with strongly typed languages like Java. The reason this is
 happening is because JS will move the variable declaration (`var y`) to the top
 of the function.
@@ -104,8 +104,8 @@ bar1();
 ```
 
 Note that only the declaration is hoisted rather than the initialization. You
-should be careful not to think of this as copy and paste the line to the top of
-the function.
+should be careful not to think of this as copying and pasting the line to the
+top of the function.
 
 ```javascript
 function bar2(x) {
@@ -154,9 +154,9 @@ function f1() {
 }
 ```
 
-However, if you were to assign a function to a variable. Note that the usual
-rules for variable hoisting applies - only the variable declaration is hoisted,
-not the initialization (the function definition).
+However, if you were to assign a function to a variable, note that the usual
+rules for variable hoisting applies - **only the variable declaration is
+hoisted, not the initialization (the function definition)**.
 
 ```javascript
 f2(); //Error: f2 is not a function
@@ -167,8 +167,8 @@ var f2 = function() {
 
 ## Default parameter values
 
-It is possible to check whether the function parameters are assigned any values.
-If a parameter is undefined, we might want to assign it a default value.
+It is possible to check whether the function parameters are assigned to a value.
+If a parameter is undefined, we might want to assign a default value to it.
 
 ```javascript
 function test(x) {
@@ -192,7 +192,9 @@ test(false); // test(): false
 ```
 
 Alternatively, there is a shorter syntax but works slightly differently for
-boundary cases.
+boundary cases. Similar to java, `||` is a **short circuit evaluation operator**
+which will stop once we are able to determine a value (i.e. if the left hand
+side value is not false, it will stop evaluation)
 
 ```javascript
 function test1(x) {
@@ -218,10 +220,9 @@ test1(false); // test1(): DEFAULT
 ```
 
 The above approaches become cumbersome when we have many function parameters.
-
-The above approaches seem to be "hackish" solutions to the problem. In ES6
-(ECMAScript 6), there is a proper syntax which specifically handles this. The
-notation is similar to PHP and Python.
+They also seem to be "hackish" solutions to the problem. In ES6 (ECMAScript 6),
+there is a proper syntax which specifically handles this. The notation is
+similar to PHP and Python.
 
 ```javascript
 function test2(x = 'DEFAULT') {
@@ -240,8 +241,8 @@ test2(false); // test2(): false
 ## Pass by value
 
 Similar to Java, JS is **pass by value**. We cannot change the value of the
-primitive type in a function. The function gets the value of the original
-variable instead of the reference of the variable. So when we modify the
+primitive type in a function. The function **gets the value** of the original
+variable **instead of the reference of the variable**. So when we modify the
 function variable, it does not modify the original variable.
 
 ```javascript
@@ -258,7 +259,8 @@ contents inside the object (e.g. a property of the object). However, again the
 function does not have the reference to the original variable so it cannot
 initialize the variable to point to another object (or another value). This is
 similar to the case for Java. For example, if you invoke a method and supply an
-ArrayList, you can change the contents of the ArrayList, but you cannot pass the
+ArrayList, you can change the contents of the ArrayList, but you cannot assign it
+to another value.
 
 ```javascript
 var globalObj = { var1: 'OLD_VALUE' };
@@ -267,6 +269,7 @@ console.log(globalObj);
 function modifyObject(obj) {
   obj.var1 = 'NEW_VALUE';
 }
+
 modifyObject(globalObj);
 console.log(globalObj);
 ```
@@ -282,8 +285,8 @@ System.out.println(arr.size()); //0
 addItem(arr);
 System.out.println(arr.size()); //1
 
-
 public static void changeItem(ArrayList<String> array){
+  //once we do this, we lose access to the original object
   array = new ArrayList<String>();
   array.add("new item");
 }
@@ -296,7 +299,8 @@ System.out.println(arr.size()); //0
 
 ## Nested functions
 
-It is possible to define functions inside a function.
+It is possible to define functions inside a function and use it inside a
+function.
 
 ```javascript
 function areaCircle(radius) {
@@ -336,6 +340,7 @@ var powerOf = function(base) {
     return result;
   };
 };
+
 var powerOf2 = powerOf(2);
 var powerOf3 = powerOf(3);
 var square_2 = powerOf2(2); //4
