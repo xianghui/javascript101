@@ -4,7 +4,7 @@ title: "1.5 Objects"
 
 ## Object-oriented programming (OOP)
 
-Javascript is a language that supports multiple programming paradigm :
+Javascript is a language that supports multiple programming paradigms:
 **imperative**, **object-oriented**, **functional**. To create an object, we use
 the `new` keyword.
 
@@ -14,9 +14,9 @@ var now = new Date();
 console.log(now);
 ```
 
-Object definitions can be defined using function constructor. The objects are
-can then be constructed using the `new` keyword (instead of being called as if
-they were normal functions).
+Object definitions are defined using function constructors. The objects can then
+be constructed using the `new` keyword (instead of being called as if they were
+normal functions).
 
 ```javascript
 //function constructor
@@ -50,14 +50,14 @@ match in the constructor field. We will discuss
 
 As seen earlier, the `this` keyword can be used to get the reference to the
 current object instance. This is helpful for defining attributes and methods
-(e.g. `this.address` and `this.setSGAddress`) of the object. If you are familiar
-with Java, it is similar to the **public** access rights.
+(e.g. `this.address` and `this.setSGAddress()`) of the object. If you are
+familiar with Java, it is similar to the **public** access rights.
 
-There is no specific syntax for **private** access rights of attributes but it
-is still possible to achieve the same kind of information hiding. For example,
-in the following example, `name` and `age` cannot be accessed directly outside
-this class. We can then define getters (accessors) and setters (mutators) to
-access/manipulate the attributes accordingly.
+There is no specific syntax for the **private** access rights of attributes but
+it is still possible to achieve the same kind of information hiding. For
+example, in the following example, `name` and `age` cannot be accessed directly
+outside this class. We can then define getters (accessors) and setters
+(mutators) to access/manipulate the attributes accordingly.
 
 ```javascript
 //function constructor
@@ -138,7 +138,7 @@ console.log(cube['top color']); //yellow
 
 Note that it is also possible to replace an existing method definition.
 Javascript will not prevent you from doing this by default, so you should be
-careful not to accidentally reassign methods unncessarily/wrongly.
+careful not to accidentally reassign methods.
 
 ```javascript
 //continue from above example
@@ -165,9 +165,9 @@ details.
 
 ![](images/obj1.png)
 
-Notice that, since each object has its own own isolated copy of properties, this
-might consume unnecessary memory if multiple objects should have the same
-definition.
+Notice that since each object has its own own isolated copy of properties, this
+might consume unnecessary memory if multiple objects should have the "same" copy
+of the definition.
 
 ```javascript
 function Shape() {}
@@ -280,8 +280,8 @@ the current set of properties, then to its the list of properties in
 `__proto__`, etc.
 
 If finally, the property name cannot be found after going up the prototype
-chain, it will show undefined for variables (and an not a function TypeError if
-trying to invoke as a function).
+chain, it will show up as undefined for the property (or not a function
+TypeError if you are trying to invoke as a function).
 
 ```javascript
 function MyObj() {}
@@ -386,8 +386,9 @@ if (obj2.hasOwnProperty('f2')) {
 
 ## Object literal notation
 
-JS provides a object literal notation that you can use to define and create
-objects. This is often preferred as it makes the codes much shorter and cleaner.
+JS provides a object literal notation (using the `{ }` syntax) that you can use
+to define and create objects. This is often preferred as it makes the codes much
+shorter and cleaner.
 
 ```javascript
 var redCircle = {
@@ -433,9 +434,8 @@ circle.prototype.foo = function() {
 ## Deeper prototype chain
 
 So far, our examples have never gone beyond 2 level of inheritance. In OOP,
-sometimes we want to extend a superclass (which probably was extending another
-superclass). ECMAScript 5 (ES5) comes with a `Object.create()` method that
-allows us to have "deeper" prototype chain.
+sometimes we want to extend a superclass . ECMAScript 5 (ES5) comes with a
+`Object.create()` method that allows us to have "deeper" prototype chain.
 
 ```javascript
 var grandgrandparent = { location4: 'grandgrandparent' };
