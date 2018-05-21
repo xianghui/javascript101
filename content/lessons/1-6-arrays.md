@@ -100,18 +100,219 @@ number + 1.
 ```javascript
 var array3 = [];
 array3['0'] = 'first';
-console.log(array3.length); // 1
-console.log(array3); // ["first"]
+console.log(array3.length); //1
+console.log(array3); //["first"]
 
 array3['123'] = 'blar';
-console.log(array3.length); // 124
-console.log(array3); // ["first", empty × 122, "blar"]
+console.log(array3.length); //124
+console.log(array3); //["first", empty × 122, "blar"]
 ```
 
 ## Array operations
 
 There are a number of common array methods defined in `Array.prototype`. To see
 the whole list of these methods, type `[]` and expand the `__proto__` field in
-the developer console.
+the developer console. When manipulating with arrays, there are 2 types of
+methods - those that modifies the array directly, and those that return a new
+array.
 
 ![](images/array_methods.png 'Array methods')
+
+### Add and remove items
+
+`push()` allows us to add item(s) to the end of the array and `unshift()` allows
+us to add item(s) to the start of the array. Both methods modify the array
+directly and returns the new length of array.
+
+```javascript
+//push() and unshift() modifies the original array directly
+var array4 = [0, 1, 2, 3, 4];
+array4.push('new item at the back');
+array4.unshift('new item at the front');
+
+console.log(array4);
+// ["new item at the front", 0, 1, 2, 3, 4, "new item at the back"]
+```
+
+`concat()` allows us to combine 2 arrays (or add items to the end of the array)
+without modifying the the original array.
+
+```javascript
+//concat() is used to join 2 or more arrays
+var arrayA = [1, 2, 3];
+var arrayB = ['a', 'b', 'c'];
+
+//can take more than one array as parameters separated by commas
+var combine = arrayA.concat(arrayB);
+console.log(combine); //[1, 2, 3, "a", "b", "c"]
+
+//can also supply items instead of array for the parameter
+var arrayC = [4, 5, 6];
+var arrayD = arrayC.concat('a', 'b', 'c');
+console.log(arrayD); //[4, 5, 6, "a", "b", "c"]
+```
+
+`pop()` and `shift()` are the opposite of `push()` and `unshift()`. `pop()`
+allows us to remove the last element in the array, while `shift()` allows us to
+remove the first element in the array. Similarly, both methods modifies the
+original array.
+
+```javascript
+var array5 = ['item1', 'item2', 'item3', 'item4'];
+console.log(array5.pop()); //item4
+console.log(array5); //["item1", "item2", "item3"]
+
+console.log(array5.shift()); //item1
+console.log(array5); //["item2", "item3"]
+```
+
+`slice(start, end)` allows us to return a new array with certain parts of an
+array. It does not modify the original array.
+
+```javascript
+var array6 = ['item1', 'item2', 'item3', 'item4'];
+
+//get items at index 1 and index 2
+var array7 = array6.slice(1, 3);
+
+console.log(array7); //["item2", "item3"]
+```
+
+There is also a `splice(index, deleteCount, items)` method which allows us to
+delete items and add items to the original array. This method will return the
+items that have been removed.
+
+```javascript
+var array8 = ['item1', 'item2', 'item3'];
+var removedItems = array8.splice(1, 1, 'a', 'b', 'c');
+
+console.log(removedItems); //["item2"]
+console.log(array8); //["item1", "a", "b", "c", "item3"]
+
+//deleteCount can be 0
+//add items to index 3
+array8.splice(3, 0, 'x', 'y', 'z');
+console.log(array8); //["item1", "a", "b", "x", "y", "z", "c", "item3"]
+
+array8.splice(1, 6, [1, 2, 3]);
+console.log(array8); //["item1", Array(3), "item3"]
+```
+
+The methods are summarized below:
+
+| Method                              | Description                                                            | Type                                       |
+| ----------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------ |
+| `push(item1, item2, ...)`           | Add 1 or more items to **end**                                         | modifies itself, return new length         |
+| `unshift(item1, item2, ...)`        | Add 1 or more items to **start**                                       | modifies itself, return new length         |
+| `pop()`                             | Remove **last** item                                                   | modifies itself, returns the removed item  |
+| `shift()`                           | Remove **first** item                                                  | modifies itself, returns the removed item  |
+| `splice(index, deleteCount, items)` | Remove _deleteCount_ items at index and add _items_ after the deletion | modifies itself, returns the removed items |
+| `concat(arr1, arr2, ...)`           | Concatenate one or more arrays                                         | returns the combined array                 |
+| `slice(start, end)`                 | Get a slice of the array from _start_ index to _end_ (excluding)       | returns a slice of the array               |
+
+### Iterative methods
+
+In this subsection, we will explore some of the commonly used Array methods for
+performing iterative type of operations - `forEach()`, `filter()`, `map()`, and
+`reduce()`. These 4 operations takes in a **callback function** as the
+parameter. This callback function is applied multiple times to each of the
+elements in the array.
+
+First up, `forEach()` will iterate through all the elements in the array. For
+each element, the callback will be invoked and the current element is supplied
+as the first parameter for this callback function.
+
+```javascript
+var array1 = [0, 1, 2, 3, 4, 5];
+
+//define a callback (cb) function
+//first parameter of cb is the current element
+function callback(item) {
+  console.log(item);
+}
+
+//forEach takes in a callback function
+//the callback function will be invoke 6 times (once for each element)
+array1.forEach(callback);
+//0, 1, ... 5 (each in a new line)
+
+//another way to do above (more commonly used)
+array1.forEach(function(item) {
+  console.log(item);
+});
+```
+
+`filter()` is used to filter away elements in the array. Similarly, a callback
+function is supplied for `filter()`, but this callback function has to return a
+boolean value indicating whether to **keep this element**.
+
+```javascript
+var array1 = [0, 1, 2, 3, 4, 5];
+
+//filter will return a new array where the elements
+//satisfy some conditions define in the cb function
+var evenArray = array1.filter(function(item) {
+  return item % 2 == 0;
+});
+
+console.log(evenArray); //[0, 2, 4]
+
+var largerThan3Array = array1.filter(function(item) {
+  return item > 3;
+});
+
+console.log(largerThan3Array); //[4, 5]
+```
+
+`map()` takes in callback function is supposed to return a value. Similar to
+`filter()`, the result is another array which is a "transformed" version of the
+original array. Notice that the length of this new array is the same as the
+original array.
+
+```javascript
+var array1 = [0, 1, 2, 3, 4, 5];
+
+//filter will return a new array where the elements
+//satisfy some conditions define in the cb function
+var plus10Array = array1.map(function(item) {
+  return item + 10;
+});
+
+console.log(plus10Array); //[10, 11, 12, 13, 14, 15]
+
+//note that sometimes we might want to know the index of the item
+//the map operation together with the index is often used in
+//ReactJS render() method to display list items
+var multiplyByIndex = array1.map(function(item, index) {
+  return item * index;
+});
+
+console.log(multiplyByIndex); //[0, 1, 4, 9, 16, 25]
+```
+
+`reduce()` is slightly different from the above 3 other operations. The callback
+function takes in **accumulator** and the **currentValue**.
+
+```javascript
+var array1 = [0, 1, 2, 3, 4, 5];
+
+//accumulator - the accumulated values previously returned
+//              in the last invocation
+//currentValue - current value
+function sumReducer(accumulator, currentValue) {
+  return accumulator + currentValue;
+}
+
+//starting value of accumulator = 0
+var sum1 = array1.reduce(sumReducer, 0);
+
+console.log(sum1); //0 + 0 + 1 + 2 + 3 + 4 + 5 = 15
+
+var sum2 = array1.reduce(sumReducer, 10);
+
+console.log(sum2); //10 + 0 + 1 + 2 + 3 + 4 + 5 = 25
+```
+
+### Other common methods
+
+`flatten()`, `join()`, `keys()`, `sort()`, `reverse()`
