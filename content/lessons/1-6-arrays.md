@@ -391,3 +391,13 @@ for (var key in array11) {
   //2 - c
 }
 ```
+
+<div>
+  <div class='text-left'>
+    <a href="/1-5-objects">Prev: 1.5 Objects</a>
+  </div>
+
+  <div class='text-right'>
+    <a href="/2-1-es-6-enhancements">Next: 2.1 ES6 Enhancements</a>
+  </div>
+</div>

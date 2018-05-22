@@ -49,16 +49,40 @@
           "entries": [
             {
               "entry": "./2-1-es6-enhancements.md"
+            },
+            {
+              "entry": "./2-2-arrow-functions.md"
+            },
+            {
+              "entry": "./2-3-string-enhancements.md"
+            },
+            {
+              "entry": "./2-4-es-6-class-system.md"
+            },
+            {
+              "entry": "./2-5-rest-and-spread-operators.md"
+            },
+            {
+              "entry": "./2-6-destructuring.md"
+            },
+            {
+              "entry": "./2-7-promises.md"
+            },
+            {
+              "entry": "./2-8-module-system.md"
+            },
+            {
+              "entry": "./2-9-symbols-iterators-generators.md"
             }
           ]
         }
       ]
     },
     {
-      "title": "3. Main Chapter",
+      "title": "3. Others",
       "entries": [
         {
-          "entry": "./lesson_two.md"
+          "entry": "./3-1-common-problems.md"
         }
       ]
     }
