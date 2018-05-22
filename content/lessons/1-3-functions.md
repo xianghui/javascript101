@@ -17,7 +17,8 @@ var sum = function(num1, num2) {
   return num1 + num2;
 };
 
-var n1 = 1, n2 = 2;
+var n1 = 1,
+  n2 = 2;
 var result = sum(1, 2); //3
 ```
 
@@ -27,7 +28,7 @@ declared with `var PARAMETER_NAME`. When we invoke a function, we are allowed to
 omit the values for the function parameters, but note that the function
 parameters will match by position from left to right. So, if you want a variable
 to be optional, you probably want to put it on the right side. If not, you could
-also use `undefined` as the parameter value, but your codes might look abit
+also use `undefined` as the parameter value, but your codes might look a bit
 awkward.
 
 ```javascript
@@ -124,10 +125,11 @@ bar2();
 ```
 
 In some languages, you get an error when you redeclare a variable. However, in
-JS, you can declare variable (you should not be doing it but JS does not stop
-you from doing it). Furthermore, it does not reset the value of the variable to
-undefined when you declare the same variable. Again, this is due to hoisting,
-which will move the declaration to the top (before the initialization).
+JS, you can redeclare a variable (you should not be doing it but JS does not
+stop you from doing it). Furthermore, it does not reset the value of the
+variable to undefined when you declare the same variable. Again, this is due to
+hoisting, which will move the declaration to the top (before the
+initialization).
 
 ```javascript
 function bar3() {
@@ -192,9 +194,9 @@ test(false); // test(): false
 ```
 
 Alternatively, there is a shorter syntax but works slightly differently for
-boundary cases. Similar to java, `||` is a **short circuit evaluation operator**
-which will stop evaluation once we are able to determine a value (i.e. if the left
-hand side value is true, it will stop evaluation).
+boundary cases. Similar to Java, `||` is a **short-circuit evaluation operator**
+which will stop evaluation once we are able to determine a value (i.e. if the
+left-hand side value is true, it will stop evaluation).
 
 ```javascript
 function test1(x) {
@@ -255,7 +257,7 @@ console.log(globalVal); //10
 ```
 
 Note that, if we were to pass in an object, it is possible to change the
-contents inside the object (e.g. a property of the object). However, again the
+contents of the object (e.g. a property of the object). However, again the
 function does not have the reference to the original variable so it cannot
 initialize the variable to point to another object (or another value). This is
 similar to the case for Java. For example, if you invoke a method and supply an
@@ -355,7 +357,7 @@ We have seen that it is possible to assign a function to a variable.
 var func = function() { ... };
 ```
 
-Function values works like a variable which can be passed into another function.
+Function values work like a variable which can be passed into another function.
 
 ```javascript
 var success = function() {
@@ -392,7 +394,7 @@ Functions are **First Class Citizens** in Javascript.
 Specifically:
 
 * function can be passed as argument (function values)
-* function can be returned from a function (higher order function)
+* function can be returned from a function (higher-order function)
 * function can be assigned to a variable
 
 <div>

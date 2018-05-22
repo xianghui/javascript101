@@ -4,10 +4,10 @@ title: "1.6 Arrays"
 
 ## Creating an array
 
-Arrays can be created using `new Array()` or using the **array literal
+Arrays can be created using `new Array()` or by using the **array literal
 notation** (similar to
 [object literal notation](/1-5-objects#object-literal-notation) but using `[]`).
-We are allowed to have different type of values (e.g. primitive type, objects,
+We are allowed to have different types of value (e.g. primitive type, objects,
 functions) within an array.
 
 ```javascript
@@ -63,8 +63,8 @@ array1.forEach(function(item) {
 });
 ```
 
-Since arrays are really objects, it is possible to have named indexes. However,
-note that JS does not support arrays with named indexes, **so array
+Since arrays are really just objects, it is possible to have named indexes.
+However, note that JS does not support arrays with named indexes, **so array
 properties/methods might not work as expected**.
 
 ```javascript
@@ -113,7 +113,7 @@ console.log(array3); //["first", empty × 122, "blar"]
 There are a number of common array methods defined in `Array.prototype`. To see
 the whole list of these methods, type `[]` and expand the `__proto__` field in
 the developer console. When manipulating with arrays, there are 2 types of
-methods - those that modifies the array directly, and those that return a new
+methods - those that modify the array directly, and those that return a new
 array.
 
 ![](images/array_methods.png 'Array methods')
@@ -122,7 +122,7 @@ array.
 
 `push()` allows us to add item(s) to the end of the array and `unshift()` allows
 us to add item(s) to the start of the array. Both methods modify the array
-directly and returns the new length of array.
+directly and return the new length of the array.
 
 ```javascript
 //push() and unshift() modifies the original array directly
@@ -135,7 +135,7 @@ console.log(array4);
 ```
 
 `concat()` allows us to combine 2 arrays (or add items to the end of the array)
-without modifying the the original array.
+without modifying the original array.
 
 ```javascript
 //concat() is used to join 2 or more arrays
@@ -154,7 +154,7 @@ console.log(arrayD); //[4, 5, 6, "a", "b", "c"]
 
 `pop()` and `shift()` are the opposite of `push()` and `unshift()`. `pop()`
 allows us to remove the last element in the array, while `shift()` allows us to
-remove the first element in the array. Similarly, both methods modifies the
+remove the first element in the array. Similarly, both methods modify the
 original array.
 
 ```javascript
@@ -214,9 +214,9 @@ The methods are summarized below:
 
 In this subsection, we will explore some of the commonly used Array methods for
 performing iterative type of operations - `forEach()`, `filter()`, `map()`, and
-`reduce()`. These 4 operations takes in a **callback function** as the
-parameter. This callback function is applied multiple times to each of the
-elements in the array.
+`reduce()`. These 4 operations take in a **callback function** as the parameter.
+This callback function is applied multiple times to each of the elements in the
+array.
 
 First up, `forEach()` will iterate through all the elements in the array. For
 each element, the callback will be invoked and the current element is supplied
@@ -315,4 +315,79 @@ console.log(sum2); //10 + 0 + 1 + 2 + 3 + 4 + 5 = 25
 
 ### Other common methods
 
-`flatten()`, `join()`, `keys()`, `sort()`, `reverse()`
+Here are the other commonly used array methods. `sort()` and `reverse()` should
+be quite indicative of what it can do. Take note that `sort()` sort by
+**Unicode** not by the numeric value, but we can supply a comparator in order to
+do numeric sorting.
+
+```javascript
+var array9 = ['a', 'z', 'p', 'w', 'i'];
+
+//modifies itself
+array9.sort();
+console.log(array9); //["a", "i", "p", "w", "z"]
+
+var array10 = [100, 15, 0, 1234];
+array10.sort();
+console.log(array10); //[0, 100, 1234, 15] (not in ascending order!)
+
+array10 = [100, 15, 0, 1234];
+
+//supply a comparator as a function (ascending order)
+array10.sort(function(n1, n2) {
+  return n1 - n2;
+});
+console.log(array10); //[0, 15, 100, 1234]
+
+//descending order
+array10 = [100, 15, 0, 1234];
+array10.sort(function(n1, n2) {
+  return n2 - n1;
+});
+console.log(array10); //[1234, 100, 15, 0]
+```
+
+`reverse()` reverse the order of the elements in the array.
+
+```javascript
+var array1 = [0, 1, 2, 3, 4, 5];
+
+//modifies itself
+array1.reverse();
+console.log(array1); //[5, 4, 3, 2, 1, 0]
+```
+
+`join()` is the opposite of the `split()` function used for strings (_split a
+string into an array using a separator_). `join()` will join all the elements of
+an array into a string (each of them separated by a separator if not `,` is
+used).
+
+```javascript
+var people = ['John', 'Peter', 'Tom'];
+console.log(people.join()); //John,Peter,Tom
+
+console.log(people.join(' ')); //John Peter Tom
+```
+
+`keys()` returns an `Array Iterator`, which can be used to get the keys/values
+of an array.
+
+```javascript
+var array11 = ['a', 'b', 'c'];
+var iterator = array11.keys();
+
+for (var key of iterator) {
+  console.log(key + ' - ' + array11[key]);
+  //0 - a
+  //1 - b
+  //2 - c
+}
+
+//another way to work with iterators in JS
+for (var key in array11) {
+  console.log(key + ' - ' + array11[key]);
+  //0 - a
+  //1 - b
+  //2 - c
+}
+```

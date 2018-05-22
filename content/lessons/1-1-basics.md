@@ -5,8 +5,8 @@ title: "1.1 Basics"
 ## Developer console
 
 To get started with learning Javascript (JS), probably the easiest way is to use
-the developer console in your web browser. You can access the developer console by
-pressing F12 (windows/chrome, firefox) or Cmd+Opt+J (mac/chrome).
+the developer console in your web browser. You can access the developer console
+by pressing F12 (windows/chrome, firefox) or Cmd+Opt+J (mac/chrome).
 
 One of the most common commands that you will use to debug your program is
 `console.log`. It is equivalent to the `System.out.println()` in Java. It will
@@ -26,7 +26,7 @@ alert('hello world');
 
 ## Semicolons?
 
-Unlike Java/C where we need to terminate each lines with semicolons, in
+Unlike Java/C where we need to terminate each line with semicolons, in
 Javascript, semicolons are optional for terminating statements. I have come
 across a number of developers who prefer not to use semicolons and just use line
 breaks for termination of line.
@@ -44,11 +44,12 @@ situations:
 
 * writing codes in a single line (e.g. `var a = 10; var b = 20;`)
 * return statement from a function. You can enclose your return value in `( )`.
-  This is quite common when coding with <a href="https://reactjs.org/" target="_blank">ReactJS</a>
+  This is quite common when coding with
+  <a href="https://reactjs.org/" target="_blank">ReactJS</a>
 
 ```javascript
 function foo() {
-  return
+  return;
   5;
 }
 console.log(foo()); //undefined (not 5!)

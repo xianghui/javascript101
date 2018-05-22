@@ -77,7 +77,7 @@ foo();
 ```
 
 Nested functions "inherit" variables/functions from its parent's scope. This is
-achieved through **closure**. Closure is combination of a function and its
+achieved through **closure**. A closure is the combination of a function and its
 lexical environment (_allows us to map identifiers to variables_). Some
 variables are created in the local environment, some are referencing the parent
 environment.
@@ -181,9 +181,9 @@ console.log(window);
 //now, yesterday, formatDate, element1, element2
 ```
 
-The situation that we have above is also know as polluting the global namespace.
-While this often does not affect the behavior of our page/program, it has some
-negative implications:
+The situation that we have above is also known as polluting the global
+namespace. While this often does not affect the behavior of our page/program, it
+has some negative implications:
 
 * Variables/functions which will not be used later cannot be garbage collected,
   thus leads to wastage to browser memory
@@ -196,7 +196,7 @@ negative implications:
 ### Immediately Invoked Function Expression (IIFE)
 
 A common way to address the above problem is to use an **Immediately Invoked
-Function Expression (IIFE)**. The idea like the name suggest is to 1) define a
+Function Expression (IIFE)**. The idea like the name suggests is to 1) define a
 function to wrap all these codes in a function and 2) invoke it immediately.
 
 ```javascript
@@ -228,9 +228,9 @@ console.log(window);
 
 One of the classic pitfall/gotcha regarding **function scoping** is that it
 might behave differently from what we think it should (especially if you have
-prior programming knowledge). Consider the following html code example with 5
+prior programming knowledge). Consider the following HTML code example with 5
 buttons. In each HTML button, we can assign an `onclick` handler, which we hope
-to show the button index. It turns on that when you click on any of the button,
+to show the button index. It turns on that when you click on any of the buttons,
 it always show 5 (instead of the respective index) :angry:.
 
 ```html
@@ -396,14 +396,14 @@ After seeing the effect of `const` above, it is important to examine what
 exactly is a `const`. Which of the following option(s) do you think is/are
 possible way(s) to describe it?
 
-1.  It is a variable where its values is immutable (i.e. its value cannot be
+1.  It is a variable where its values are immutable (i.e. its value cannot be
     changed)
 2.  It is a variable where the reference cannot be reassigned
 3.  It is like the `final` keyword in Java
 
 Let's look at each case :
 
-**_1. It is a variable where its values is immutable (i.e. its value cannot be
+**_1. It is a variable where its values are immutable (i.e. its value cannot be
 changed)_**
 
 We will be covering [objects](/1-5-objects) and [arrays](/1-6-arrays) next but
@@ -437,8 +437,8 @@ us to reassign a new variable/value to it.
 
 **_3. It is like the `final` keyword in Java_**
 
-It seems like `const` acts like the `final` keyword in Java. We are not allow to
-reassign another value to it.
+It seems like `const` acts like the `final` keyword in Java. We are not allowed
+to reassign another value to it.
 
 ```java
 final int a = 10;
@@ -447,8 +447,8 @@ System.out.println(a); //10
 a = 20; //Not allowed => SyntaxError : cannot assign a value to final variable a
 ```
 
-Something to take note about the `final` keyword in Java is that we do not need
-to initialize its value when you declare the `final` variable. Java does ensure
+Something to take note of the `final` keyword in Java is that we do not need to
+initialize its value when you declare the `final` variable. Java does ensure
 that you can only initialize its value once, but you can always initialize its
 value later.
 
@@ -468,7 +468,7 @@ a = 100;
 
 So, we conclude the following:
 
-1.  It is a variable where its values is immutable (i.e. its value cannot be
+1.  It is a variable where its values are immutable (i.e. its value cannot be
     changed) :x:
 2.  It is a variable where the reference cannot be reassigned :white_check_mark:
 3.  It is like the `final` keyword in Java :x:

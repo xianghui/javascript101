@@ -5,7 +5,7 @@ title: "1.2 Variables"
 ## Variable declaration and assignment
 
 Variables are declared using the `var` keyword. JS is dynamically typed (i.e.
-the type of variables can change at run time). For example, you can assign an
+the type of variables can change at runtime). For example, you can assign an
 integer to a variable and along the way assign a string to the same variable
 (thus changing the type of the variable to string type). `typeof` is a special
 operator for getting the type of a variable (in string format).
@@ -20,12 +20,13 @@ console.log(a + ' ' + typeof a); //hello string
 var n1, n2;
 ```
 
-## Data types
+## Datatypes
 
 JS has 6 primitive data types: `undefined`, `null`, `number`, `string`,
 `boolean`, and `symbol`. You can choose to enclose strings with single quotes
-(`'`) or double quotes (`"`) - just use matching type of quotes. There is also
-the `object` type for complex type. You can also assign functions to a variable.
+(`'`) or double quotes (`"`) - just use the matching type of quotes. There is
+also the `object` type for complex type. You can also assign functions to a
+variable.
 
 ```javascript
 typeof 1; //number
@@ -70,9 +71,9 @@ typeof (undefined + 'abc'); //string
 
 Javascript does auto type conversion when you assign a value to a variable. It
 tries its best to determine the type of your variable/expression. JS also
-performs type coercion when an expression contains multiple types. You are allow
-to concatenate different data types (e.g. a string with a number) like in the
-case of Java.
+performs type coercion when an expression contains multiple types. You are
+allowed to concatenate different data types (e.g. a string with a number) like
+in the case of Java.
 
 ```javascript
 1 / 10; //0.1

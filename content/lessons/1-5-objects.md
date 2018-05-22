@@ -40,8 +40,8 @@ console.log(typeof notObject); //undefined
 We have seen the `typeof` operator
 [previously](/1-2-variables#variable-declaration-and-assignment). The
 `instanceof` operator test the type of the object. Specifically, this is
-achieved by going up the the prototype chain of the object and checking for a
-match in the constructor field. We will discuss
+achieved by going up the prototype chain of the object and checking for a match
+in the constructor field. We will discuss
 [prototypal inheritance](#prototypal-inheritance) shortly.
 
 ![](images/prototypeconstructor.png)
@@ -386,7 +386,7 @@ if (obj2.hasOwnProperty('f2')) {
 
 ## Object literal notation
 
-JS provides a object literal notation (using the `{ }` syntax) that you can use
+JS provides an object literal notation (using the `{ }` syntax) that you can use
 to define and create objects. This is often preferred as it makes the codes much
 shorter and cleaner.
 
@@ -404,7 +404,7 @@ console.log(redCircle);
 console.log(redCircle.calculateArea());
 ```
 
-The same rules from before applies for the object literal notation.
+The same rules from before apply for the object literal notation.
 
 ```javascript
 var circle = {
@@ -434,7 +434,7 @@ circle.prototype.foo = function() {
 ## Deeper prototype chain
 
 So far, our examples have never gone beyond 2 level of inheritance. In OOP,
-sometimes we want to extend a superclass . ECMAScript 5 (ES5) comes with a
+sometimes we want to extend a superclass. ECMAScript 5 (ES5) comes with a
 `Object.create()` method that allows us to have "deeper" prototype chain.
 
 ```javascript
