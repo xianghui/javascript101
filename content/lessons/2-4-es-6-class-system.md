@@ -7,3 +7,5 @@ TODO:
 `class` keyword
 
 Enhanced Object Literals in ES6
+
+Talk about returning object literals in ES6 (need brackets)

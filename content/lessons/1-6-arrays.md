@@ -2,7 +2,7 @@
 title: "1.6 Arrays"
 ---
 
-## Creating an array
+## Creating an Array
 
 Arrays can be created using `new Array()` or by using the **array literal
 notation** (similar to
@@ -31,7 +31,7 @@ console.log(Array.isArray(array1)); //true
 console.log(Array.isArray(array2)); //true
 ```
 
-## Access elements in arrays
+## Access Elements in Arrays
 
 Similar to Java, we use `[]` and an index number to access the elements in an
 array. However, if we try to access an out of range index, **undefined** will be
@@ -108,7 +108,7 @@ console.log(array3.length); //124
 console.log(array3); //["first", empty × 122, "blar"]
 ```
 
-## Array operations
+## Array Operations
 
 There are a number of common array methods defined in `Array.prototype`. To see
 the whole list of these methods, type `[]` and expand the `__proto__` field in
@@ -118,7 +118,7 @@ array.
 
 ![](images/array_methods.png 'Array methods')
 
-### Add and remove items
+### Add and Remove Items
 
 `push()` allows us to add item(s) to the end of the array and `unshift()` allows
 us to add item(s) to the start of the array. Both methods modify the array
@@ -210,7 +210,7 @@ The methods are summarized below:
 | `concat(arr1, arr2, ...)`           | Concatenate one or more arrays                                         | returns the combined array                 |
 | `slice(start, end)`                 | Get a slice of the array from _start_ index to _end_ (excluding)       | returns a slice of the array               |
 
-### Iterative methods
+### Iterative Methods
 
 In this subsection, we will explore some of the commonly used Array methods for
 performing iterative type of operations - `forEach()`, `filter()`, `map()`, and
@@ -313,7 +313,7 @@ var sum2 = array1.reduce(sumReducer, 10);
 console.log(sum2); //10 + 0 + 1 + 2 + 3 + 4 + 5 = 25
 ```
 
-### Other common methods
+### Other Common Methods
 
 Here are the other commonly used array methods. `sort()` and `reverse()` should
 be quite indicative of what it can do. Take note that `sort()` sort by

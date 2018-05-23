@@ -48,7 +48,7 @@
           "title": "ES6 Enhancements",
           "entries": [
             {
-              "entry": "./2-1-es6-enhancements.md"
+              "entry": "./2-1-es-6-enhancements.md"
             },
             {
               "entry": "./2-2-arrow-functions.md"

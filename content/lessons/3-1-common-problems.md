@@ -8,3 +8,4 @@ used in web development.
 TODO:
 
 * AJAX, Fetch API
+* NodeJS - instead of browser, we have the node environment

@@ -2,7 +2,7 @@
 title: "1.2 Variables"
 ---
 
-## Variable declaration and assignment
+## Variable Declaration and Assignment
 
 Variables are declared using the `var` keyword. JS is dynamically typed (i.e.
 the type of variables can change at runtime). For example, you can assign an
@@ -44,7 +44,7 @@ var f = function() {};
 typeof f; //function
 ```
 
-## Undefined vs Not defined
+## Undefined vs Not Defined
 
 Other than assigning proper values to a variable, there are also other special
 values (`null` and `undefined`) in Javascript. Note that **undefined** is not
@@ -67,7 +67,7 @@ undefined + '1'; //undefined1
 typeof (undefined + 'abc'); //string
 ```
 
-## Auto type conversion
+## Auto Type Conversion
 
 Javascript does auto type conversion when you assign a value to a variable. It
 tries its best to determine the type of your variable/expression. JS also

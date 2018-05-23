@@ -20,7 +20,7 @@ for older browser to work as expected with the new codes.
 > Source:
 > <a href="https://en.wikipedia.org/wiki/Polyfill_(programming)" target="_blank">Wikipedia</a>
 
-## Block-scoped variables (Recap)
+## Block-Scoped Variables (Recap)
 
 We have already seen this previously through the use of
 [`let` and `const`](/1-4-scoping#code-classlanguage-textletcodecode-classlanguage-textconstcode-keyword).
@@ -37,7 +37,7 @@ scoping `{ }` instead of function scoping.
 console.log(var1); //Error: var1 is not defined
 ```
 
-## Default function parameters (Recap)
+## Default Function Parameter Values (Recap)
 
 We have also discussed
 [default function parameters previously](/1-3-functions#default-parameter-values).

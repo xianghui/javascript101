@@ -2,7 +2,7 @@
 title: "1.1 Basics"
 ---
 
-## Developer console
+## Developer Console
 
 To get started with learning Javascript (JS), probably the easiest way is to use
 the developer console in your web browser. You can access the developer console

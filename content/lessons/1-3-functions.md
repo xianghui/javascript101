@@ -2,7 +2,7 @@
 title: "1.3 Functions"
 ---
 
-## Function declaration
+## Function Declaration
 
 Functions are defined using the `function` keyword. Some functions can return a
 value while others do actions without returning a value.
@@ -167,7 +167,7 @@ var f2 = function() {
 };
 ```
 
-## Default parameter values
+## Default Parameter Values
 
 It is possible to check whether the function parameters are assigned to a value.
 If a parameter is undefined, we might want to assign a default value to it.
@@ -240,7 +240,7 @@ test2(-1); // test2(): -1
 test2(false); // test2(): false
 ```
 
-## Pass by value
+## Pass by Value
 
 Similar to Java, JS is **pass by value**. We cannot change the value of the
 primitive type in a function. The function **gets the value** of the original
@@ -299,7 +299,7 @@ changeItem(arr);
 System.out.println(arr.size()); //0
 ```
 
-## Nested functions
+## Nested Functions
 
 It is possible to define functions inside a function and use them inside
 functions.
@@ -327,7 +327,7 @@ function areaCircle1(radius) {
 console.log(areaCircle1(3)); //PI * 3 * 3
 ```
 
-### Higher order function
+### Higher Order Functions
 
 It is also possible for a function to return another function as the return
 result.
@@ -349,7 +349,7 @@ var square_2 = powerOf2(2); //4
 var cube_3 = powerOf3(3); //27
 ```
 
-## First class citizen
+## First Class Citizens
 
 We have seen that it is possible to assign a function to a variable.
 

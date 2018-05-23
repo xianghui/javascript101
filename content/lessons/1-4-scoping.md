@@ -8,7 +8,7 @@ Unlike most programming languages (such as C/Java) which use **Block Scoping**,
 Javascript uses both **Function Scoping** and **Block Scoping**. Scoping is
 relevant when dealing with variable (or function) declarations.
 
-## Block scoping
+## Block Scoping
 
 Depending on the language, blocks are defined using different syntax. For
 example, in Java/C/Javascript, a block is created using `{` curly brackets `}`.
@@ -24,7 +24,7 @@ Python uses whitespaces for defining blocks.
 System.out.println(x); //x is not defined
 ```
 
-## Function scoping
+## Function Scoping
 
 In JS, we have something called **function scoping** (i.e. a new scope is only
 created inside a function).
@@ -118,8 +118,8 @@ function parent() {
 parent(); //1
 ```
 
-In the above example, note that at the global scope, we have the `window`
-object.
+In the above example, note that at the global scope, we have the `window` object
+(if the codes are executed in the web browser).
 
 ```javascript
 //Another example
@@ -190,7 +190,7 @@ has some negative implications:
 * Possibly slower performance (due to more memory consumption)
 * Potential unexpected behaviors (e.g. if a function tries to access a variable
   that is not defined in its scope and end up using the variable defined in the
-  window scope, thus resulting in some output when it is supposed to show an
+  `window` scope, thus resulting in some output when it is supposed to show an
   error instead)
 
 ### Immediately Invoked Function Expression (IIFE)
@@ -224,7 +224,7 @@ console.log(window);
 //we will not have the additional properties now
 ```
 
-### Classic loop pitfall
+### Classic Loop Pitfall
 
 One of the classic pitfall/gotcha regarding **function scoping** is that it
 might behave differently from what we think it should (especially if you have
@@ -275,7 +275,7 @@ the for loop).
 | Iteration | window's env   | description                                                                                   |
 | --------- | -------------- | --------------------------------------------------------------------------------------------- |
 | 0         | [...., `i`: 0] | `i` is declared and assigned the value of 0                                                   |
-| 1 ... 4   | [...., `i`: 1] | value of `i` in the window's environment changes from 0 to 4                                  |
+| 1 ... 4   | [...., `i`: 1] | value of `i` in the `window`'s environment changes from 0 to 4                                |
 | 5         | [...., `i`: 5] | value of `i` changes to 5 and `i < buttons.length` evaluates to `false` and break out of loop |
 
 #### How can we resolve this?

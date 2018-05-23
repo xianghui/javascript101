@@ -2,7 +2,7 @@
 title: "1.5 Objects"
 ---
 
-## Object-oriented programming (OOP)
+## Object-Oriented Programming (OOP)
 
 Javascript is a language that supports multiple programming paradigms:
 **imperative**, **object-oriented**, **functional**. To create an object, we use
@@ -46,7 +46,7 @@ in the constructor field. We will discuss
 
 ![](images/prototypeconstructor.png)
 
-## Attributes and methods
+## Attributes and Methods
 
 As seen earlier, the `this` keyword can be used to get the reference to the
 current object instance. This is helpful for defining attributes and methods
@@ -157,7 +157,7 @@ console.log(cube['calculateVolume']);
 // }
 ```
 
-## Prototypal inheritance
+## Prototypal Inheritance
 
 To view all the properties associated with an object, we can do a
 `console.log(obj)` and expand the nodes in the developer console to see the
@@ -384,7 +384,7 @@ if (obj2.hasOwnProperty('f2')) {
 }
 ```
 
-## Object literal notation
+## Object Literal Notation
 
 JS provides an object literal notation (using the `{ }` syntax) that you can use
 to define and create objects. This is often preferred as it makes the codes much
@@ -431,7 +431,7 @@ circle.prototype.foo = function() {
 };
 ```
 
-## Deeper prototype chain
+## Deeper Prototype Chains
 
 So far, our examples have never gone beyond 2 level of inheritance. In OOP,
 sometimes we want to extend a superclass. ECMAScript 5 (ES5) comes with a
