@@ -1,13 +1,8 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
-import config from '../../data/SiteConfig'
-import MainHeader from '../components/Layout/Header'
-import About from '../components/About/About'
-
-const BodyContainer = styled.div`
-  padding: ${props => props.theme.sitePadding};
-`
+import React from 'react';
+import Helmet from 'react-helmet';
+import config from '../../data/SiteConfig';
+import MainHeader from '../components/Layout/Header';
+import About from '../components/About/About';
 
 class AboutPage extends React.Component {
   render() {
@@ -21,13 +16,11 @@ class AboutPage extends React.Component {
             location={this.props.location}
             logo={config.siteLogo}
           />
-          <BodyContainer>
-            <About />
-          </BodyContainer>
+          <About />
         </main>
       </div>
-    )
+    );
   }
 }
 
-export default AboutPage
+export default AboutPage;

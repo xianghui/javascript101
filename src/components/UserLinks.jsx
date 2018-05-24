@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { FaGithubAlt, FaTwitter } from 'react-icons/lib/fa';
+import {
+  FaGithub,
+  FaTwitter,
+  FaLinkedinSquare,
+  FaFacebookSquare
+} from 'react-icons/lib/fa';
 // import { MdMessage, MdEmail } from 'react-icons/lib/md';
 import styled from 'styled-components';
 
@@ -30,10 +35,16 @@ class UserLinks extends Component {
     return (
       <Container className="user-links">
         <UserIcon href="https://github.com/xianghui" target="_blank">
-          <FaGithubAlt style={iconStyle} />
+          <FaGithub style={iconStyle} />
         </UserIcon>
         <UserIcon href="https://twitter.com/hsianghui" target="_blank">
           <FaTwitter style={iconStyle} />
+        </UserIcon>
+        <UserIcon href="https://www.linkedin.com/in/hsianghui" target="_blank">
+          <FaLinkedinSquare style={iconStyle} />
+        </UserIcon>
+        <UserIcon href="https://www.facebook.com/hsianghui" target="_blank">
+          <FaFacebookSquare style={iconStyle} />
         </UserIcon>
       </Container>
     );
