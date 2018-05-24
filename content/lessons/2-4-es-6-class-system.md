@@ -40,7 +40,9 @@ console.log(p1);
 ```
 
 If we look into the details of `p1` in the developer console, note that
-`move(x, y)` is defined in `__proto__`. ![](images/obj5.png 'Point object')
+`move(x, y)` is defined in `__proto__`.
+
+![](images/obj5.png 'Point object')
 
 ## Inheritance
 
@@ -281,6 +283,6 @@ class SomeClass {}
   </div>
 
   <div class='text-right'>
-    <a href="/2-5-rest-and-spread-operators">Next: 2.5 Rest and Spread Operators</a>
+    <a href="/2-5-object-enhancements">Next: 2.5 Object Enhancements</a>
   </div>
 </div>

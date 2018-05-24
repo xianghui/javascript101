@@ -63,6 +63,15 @@ console.log(msg2); //Hi Ms Jane Doe
 
 ## Common Usecases
 
+#### Dealing with strings having both `'` and `"`
+
+```javascript
+const html = `
+<a href='http://www.yahoo.com'>Yahoo</a>
+<a href="http://www.google.com">Google</a>
+`;
+```
+
 #### More readable strings / codes
 
 ```javascript

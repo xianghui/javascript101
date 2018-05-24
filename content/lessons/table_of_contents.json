@@ -60,19 +60,22 @@
               "entry": "./2-4-es-6-class-system.md"
             },
             {
-              "entry": "./2-5-rest-and-spread-operators.md"
+              "entry": "./2-5-object-enhancements.md"
             },
             {
-              "entry": "./2-6-destructuring.md"
+              "entry": "./2-6-rest-and-spread-operators.md"
             },
             {
-              "entry": "./2-7-promises.md"
+              "entry": "./2-7-destructuring.md"
             },
             {
-              "entry": "./2-8-module-system.md"
+              "entry": "./2-8-promises.md"
             },
             {
-              "entry": "./2-9-symbols-iterators-generators.md"
+              "entry": "./2-9-module-system.md"
+            },
+            {
+              "entry": "./2-10-symbols-iterators-generators.md"
             }
           ]
         }
