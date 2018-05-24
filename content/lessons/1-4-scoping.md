@@ -43,9 +43,10 @@ function foo() {
 
 ### `var` keyword
 
-As seen in previous examples, variables are defined using the `var` keyword.
-`let` and `const` were introduced later on in ES6, which allows us to define
-variables with block scoping (to be elaborated shortly).
+As seen in previous examples, variables are defined using the `var` keyword and
+it works on a function scoping manner. `let` and `const` were introduced later
+on in ES6, which allows us to define variables with block scoping (to be
+elaborated shortly).
 
 ```javascript
 //Javascript Example
@@ -54,35 +55,142 @@ var x = 10;
   let y = 20; //does not make a difference if we were to enclose with { }
 }
 console.log(x); //10
-console.log(y); //y is not defined
+console.log(y); //Error: y is not defined
 ```
+
+## Lexical Environment
+
+To understand how the values in scopes are finally derived, it is important to
+introduce the concept of **environment**. This is not a concept specific to JS,
+but rather something common in programming languages. Simply speaking, it is **a
+mapping of identifiers to values (variables and functions)**.
+
+When we execute the following in the browser, 2 identifiers (`x` and `foo`) are
+created in the **global environment**. In the case of the browser, this is
+captured in the `window` object.
+
+```javascript
+var x = 10;
+
+function foo() {
+  console.log('foo');
+}
+
+console.log(x); //10
+foo(); //foo
+
+console.log(window.x); //10
+window.foo(); //foo
+
+//global_env = [x: 10, foo: ƒ, ...] (window object)
+```
+
+You can see the list of identifiers defined in the global environment by
+executing `window` in the developer console and expanding the node.
+
+![](images/window.png 'Extract of the window object')
+
+Variables/functions can also be declared in functions. In which case, in
+addition to the global environment, there will be an environment created to
+capture the mapping of identifiers in the function. For example, consider the
+following code snippet:
+
+```javascript
+//global_env = [x: 10, y: 'y', foo: ƒ, ...] (window object)
+var x = '10';
+var y = 'y';
+function foo() {
+  //env = [x: 'in foo'], global_env
+  var x = 'in foo';
+  console.log(x);
+  console.log(y);
+}
+
+console.log(x); //10
+console.log(y); //y
+
+foo();
+//in foo
+//y
+
+console.log(x); //10
+```
+
+In the global environment (`window` object), we still have 2 identifiers (`x`,
+`y`, and `foo`). In `foo()`, there is a **local environment** which contains an
+identifier (`x`). In addition, there is also a reference to the parent's
+environment, which in this case is the global environment.
+
+When there is a need to derive the value of an identifier (e.g.
+`console.log(y)`), JS will look up the value in its environment (global_env).
+Likewise, when executing codes in a function, it will look up its own
+environment to derive a value. If the identifier is found in its own
+environment, it will use the value found in the mapping. However, if the
+identifier is not found in its own environment (e.g. `console.log(y)`), it will
+go to its parent's environment and repeat this lookup process. This illustrates
+the concept of **scope chaining**.
+
+So far, we have discussed the concept of **environments** but notice that the
+heading for this section is **Lexical Environment**. **Lexical** comes from the
+idea of **lexical scoping/static scoping** which means that the scope is
+determined when the code is compiled (rather than at runtime or **dynamic
+scoping**). Referring to the above codes, this means that the mapping of the
+environment of `foo()` is predefined. Of course the values of the identifiers,
+but the list of identifiers in an environment can be determined beforehand.
 
 ## Closure
 
-We have seen in [1.2 Functions](/1-3-functions#nested-functions) that functions
-can be defined within functions.
+So far, we have established that each function will have an environment (and its
+parent's environment). However, what happens when we have a
+[nested function](/1-3-functions#nested-functions) case which returns a function
+that is accessing a variable defined in the outer scope?
+
+As an example, suppose we define a function `foo` which defines a variable `x`
+and a nested function `bar`. `foo` returns `bar` as a function value which can
+be called later.
 
 ```javascript
+var x = 'global';
 function foo() {
+  var x = 'local';
   function bar() {
-    console.log('bar');
+    console.log(x);
   }
-  console.log('foo');
-  bar();
+  return bar;
 }
 
-foo();
-//foo
-//bar
+var f = foo();
+f(); //local
 ```
 
-Nested functions "inherit" variables/functions from its parent's scope. This is
-achieved through **closure**. A closure is the combination of a function and its
-lexical environment (_allows us to map identifiers to variables_). Some
-variables are created in the local environment, some are referencing the parent
-environment.
+The catch now is that since `foo` has been invoked (`var f = foo();`), it might
+seem like we have lost access to the `x` defined in `var x = 'local';`. However,
+running the above code snippets show that the `local` is correctly printed.
+
+This is achieved through **closures**. A closure is the combination of a
+function and its lexical environment. So in this case, when we define `bar()`, a
+closure is created with its lexical environment (which can be used for looking
+up identifiers).
 
 ```javascript
+//env1 = [x: 'global', foo: ƒ, f: ƒ, ...] (window object)
+var x = 'global';
+function foo() {
+  //env2 = [x: 'local', bar: ƒ], env1
+  var x = 'local';
+  function bar() {
+    //env3 = [], env2
+    console.log(x);
+  }
+  return bar;
+}
+
+var f = foo();
+f(); //local
+```
+
+```javascript
+//Another example
 function foo() {
   var parent = 'parent';
   function bar() {
@@ -97,7 +205,7 @@ foo(); //parent --- child
 ```
 
 ```javascript
-//Another example
+//Yet another example
 var a = 1; //env1 = [a:1,...] (window object)
 function parent() {
   var b = 2; //env2 = [b:2], env1
@@ -108,7 +216,7 @@ function parent() {
     //when trying to access a:
     //can't find in local environment (env3)
     //       try parent's environment (env2)
-    //can't find in parent'e environment (env2)
+    //can't find in parent's environment (env2)
     //       try parent's parent's environment (env1)
     //etc
     console.log(a); //1
@@ -116,16 +224,6 @@ function parent() {
   child();
 }
 parent(); //1
-```
-
-In the above example, note that at the global scope, we have the `window` object
-(if the codes are executed in the web browser).
-
-```javascript
-//Another example
-var somevar = 'abc';
-console.log(somevar); //abc
-console.log(window.somevar); //abc
 ```
 
 One thing to be careful is that when declaring variables in functions, if you do
@@ -154,9 +252,10 @@ foo(); //def
 console.log(x); //def
 ```
 
-When we define variables or functions in the global scope, note that the entries
-will be found in the global namespace (`window` object). However, some of these
-variables or functions are only declared and used once. For example:
+As mentioned earlier, when defining variables or functions in the global scope,
+the entries will be found in the global namespace (`window` object). However,
+some of these variables or functions are only declared and used once. For
+example:
 
 ```javascript
 //code snippet to put in the current date/time
@@ -472,6 +571,41 @@ So, we conclude the following:
     changed) :x:
 2.  It is a variable where the reference cannot be reassigned :white_check_mark:
 3.  It is like the `final` keyword in Java :x:
+
+#### No hoisting for `let`/`const`
+
+```javascript
+//var case
+//var a declaration is hoisted
+//a is assigned value of 10
+var a = 10;
+console.log(a); //10
+```
+
+```javascript
+//var case
+//var a declaration is hoisted
+console.log(a); //undefined
+var a = 10;
+```
+
+```javascript
+//let case
+let a = 10;
+console.log(a); //10
+```
+
+```javascript
+//let case
+console.log(a); //Error: a is not defined
+let a = 10;
+```
+
+```javascript
+//let case
+console.log(a); //Error: a is not defined
+const a = 10;
+```
 
 <div>
   <div class='text-left'>

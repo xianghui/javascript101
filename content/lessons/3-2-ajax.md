@@ -1,5 +1,5 @@
 ---
-title: "3.1 Common Problems"
+title: "3.2 AJAX"
 ---
 
 This section will cover other commonly problems and solutions that is typically

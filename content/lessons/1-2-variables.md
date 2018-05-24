@@ -47,11 +47,11 @@ typeof f; //function
 ## Undefined vs Not Defined
 
 Other than assigning proper values to a variable, there are also other special
-values (`null` and `undefined`) in Javascript. Note that **undefined** is not
-the same as **not defined**. A variable takes on the value of **undefined** if
-it is declared but not assigned any value. Whereas, if you try to access a
-variable that is not declared, an error is thrown indicating that the variable
-is `not defined` (or not declared).
+values (`null` and `undefined`) in Javascript. Note that `undefined` is not the
+same as `not defined`. A variable takes on the value of `undefined` if it is
+declared but not assigned any value. Whereas, if you try to access a variable
+that is not declared, an error is thrown indicating that the variable is
+`not defined` (or not declared).
 
 ```javascript
 var c = null;

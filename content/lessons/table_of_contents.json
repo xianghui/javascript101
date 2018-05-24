@@ -85,7 +85,10 @@
       "title": "3. Others",
       "entries": [
         {
-          "entry": "./3-1-common-problems.md"
+          "entry": "./3-1-execution-context.md"
+        },
+        {
+          "entry": "./3-2-ajax.md"
         }
       ]
     }

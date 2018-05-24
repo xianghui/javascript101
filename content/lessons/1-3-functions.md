@@ -63,12 +63,12 @@ foo1(7, undefined, 8);
 //z is 8
 ```
 
-[Recall that there is a difference between **undefined** and **not defined**](/1-2-variables#undefined-vs-not-defined).
-**Undefined** is used to denote cases where a variable is declared but not
-assigned a value, whereas **not defined** is an error that is thrown when that
+[Recall that there is a difference between `undefined` and `not defined`](/1-2-variables#undefined-vs-not-defined).
+`undefined` is used to denote cases where a variable is declared but not
+assigned a value, whereas `not defined` is an error that is thrown when that
 variable is declared. When you try to access a variable that is not declared (as
 the function parameters or inside the function or in its parent's scope), we get
-a **not defined** error.
+a `not defined` error.
 
 ```javascript
 function bar(x) {
@@ -84,12 +84,15 @@ bar();
 ## Hoisting
 
 Javascript has a special behavior called **hoisting** which moves (variable or
-function) declarations to the top. If we were to change the above example to the
-following, you will realize that the browser no longer shows the not defined
-error. Instead, `y` is now undefined. It might look strange especially for those
-who are familiar with strongly typed languages like Java. The reason this is
-happening is because JS will move the variable declaration (`var y`) to the top
-of the function.
+function) declarations to the top (_theoretically speaking, it does not really
+move the declarations to the top but this is an easy way to understand this
+concept_).
+
+If we were to change the above example to the following, you will realize that
+the browser no longer shows the `not defined` error. Instead, `y` is now
+undefined. It might look strange especially for those who are familiar with
+strongly typed languages like Java. The reason this is happening is because JS
+will move the variable declaration (`var y`) to the top of the function.
 
 ```javascript
 function bar1(x) {
@@ -146,8 +149,8 @@ bar3(); //bar3(y): 10
 ```
 
 Function declaration works similar to variable declarations. It is hoisted to
-the top so you can call the function even though the function is declared is
-below the function invocation.
+the top of the "global" context so you can call the function even though the
+function is declared is below the function invocation.
 
 ```javascript
 f1();
