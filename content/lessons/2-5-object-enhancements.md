@@ -71,7 +71,7 @@ var redCircle = {
 };
 ```
 
-Sometimes, the property name can only be determine during runtime.
+Sometimes, the property name can only be determined during runtime.
 
 ```javascript
 let key1 = prompt(`Please enter first property`); //Enter: name
@@ -88,7 +88,7 @@ const obj = {
 console.log(obj); //{name: "John", age: "20"}
 ```
 
-The property names can also be designed progammatically.
+The property names can also be designed programmatically.
 
 ```javascript
 var type = 'login';
