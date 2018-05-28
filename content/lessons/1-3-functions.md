@@ -17,8 +17,7 @@ var sum = function(num1, num2) {
   return num1 + num2;
 };
 
-var n1 = 1,
-  n2 = 2;
+var n1 = 1, n2 = 2;
 var result = sum(1, 2); //3
 ```
 

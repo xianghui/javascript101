@@ -49,7 +49,7 @@ situations:
 
 ```javascript
 function foo() {
-  return;
+  return
   5;
 }
 console.log(foo()); //undefined (not 5!)
@@ -61,7 +61,6 @@ function foo() {
 }
 
 // alternatively, you could use ( )
-// prettier-ignore
 function foo1() {
   return (
     5

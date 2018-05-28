@@ -287,14 +287,54 @@ has some negative implications:
 * Variables/functions which will not be used later cannot be garbage collected,
   thus leads to wastage to browser memory
 * Possibly slower performance (due to more memory consumption)
-* Potential unexpected behaviors (e.g. if a function tries to access a variable
-  that is not defined in its scope and end up using the variable defined in the
-  `window` scope, thus resulting in some output when it is supposed to show an
-  error instead)
+* Potential unexpected/unsafe behaviors (see below example)
+
+Suppose we have a simple html file that includes 2 javascript files (_Note that
+when we include javascript files, it is as if we are copying and pasting the
+codes from the included javascript files into the html document. This also mean
+that the order by which the javascript files are included sometimes matter_).
+The expected behavior of loading this html file in the web browser is that `5`
+will be printed out after 5 secs (based on `lib1.js`).
+
+```html
+<html>
+  <script src="lib1.js"></script>
+  <script src="lib2.js"></script>
+</html>
+```
+
+```javascript
+//lib1.js
+var a = 10;
+
+//function that will print out value of "a" after 5 secs
+function foo() {
+  setTimeout(function() {
+    console.log(a);
+  }, 5000);
+}
+
+//by right should print out 5 after 5 secs
+foo();
+```
+
+```javascript
+//lib2.js
+var a = 100;
+```
+
+However, if we would open the html file in the web browser, we notice that `100`
+is printed out in the developer console instead. This is because `lib2.js`
+declare variable `a` and initialize it to 100. This will not create another
+property `a` in the `window` object since it already has the `a` property, but
+this will modify the value of `window.a` to 100. So when the `setTimeout`
+function is triggered 5 secs later, the value of `window.a` is no longer its
+original intended value as written in `lib1.js`. This demonstrate a situation of
+potential unsafe code execution.
 
 ### Immediately Invoked Function Expression (IIFE)
 
-A common way to address the above problem is to use an **Immediately Invoked
+A common way to address the above problems is to use an **Immediately Invoked
 Function Expression (IIFE)**. The idea like the name suggests is to 1) define a
 function to wrap all these codes in a function and 2) invoke it immediately.
 

@@ -41,8 +41,8 @@ array.forEach(i => {
 ```
 
 If there is only 1 parameter, the enclosing `( )` for the parameter is optional.
-However, if there is no parameter, we have to put it so that there is no syntax
-error.
+However, if there is no parameter, we have to put `( )` so that there is no
+syntax error.
 
 ```javascript
 const printMessage = msg => {
@@ -57,6 +57,22 @@ const sayHello = () => {
 };
 
 sayHello(); //hello
+```
+
+Note that when there is only a single statement and we are not using the return
+statement (like the above `add` example), we must explicitly enclose with `( )`
+so that the JS engine will not interpret it as normal statements within the
+`{ }` block.
+
+```javascript
+//invalid
+const person = () => {name: 'John', age: 20};
+
+//have to enclose with ()
+const person = () => ({name: 'John', age: 20});
+
+console.log(person());
+//{name: "John", age: 20}
 ```
 
 It might seem that arrow function is a perfect replacement for the `function`
