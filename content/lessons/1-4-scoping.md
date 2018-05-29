@@ -307,7 +307,8 @@ will be printed out after 5 secs (based on `lib1.js`).
 //lib1.js
 var a = 10;
 
-//function that will print out value of "a" after 5 secs
+//callback function that will print out value of
+//"a" after 5 secs
 function foo() {
   setTimeout(function() {
     console.log(a);

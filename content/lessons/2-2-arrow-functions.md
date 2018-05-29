@@ -276,9 +276,8 @@ and XML (AJAX)** call in an object, and then updating the fields of the object
 based on the results of the AJAX call - `this` will not be referring to the
 current object! We have to use the same trick as before. This is quite a common
 use case and developers have been using this approach to make the program work
-as expected. The [Fetch API](/3-1-common-problems) (`fetch()` and
-[Promises](/2-7-promises) (`.then()` keyword) will be discussed in later
-sections. (TODO: add in the hyperlink)
+as expected. The [Fetch API](/3-2-ajax) (`fetch()` and [Promises](/2-8-promises)
+(`.then()` keyword) will be discussed in later sections.
 
 ```javascript
 function Person() {
@@ -290,14 +289,14 @@ function Person() {
   //call an API using the Fetch API
   //and update the name and gender field in this object
   this.getRandomPerson = function() {
-    fetch('https://jsonplaceholder.typicode.com/users/1').then(function(
-      response
-    ) {
-      response.json().then(function(person) {
+    fetch('https://jsonplaceholder.typicode.com/users/1')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(person) {
         self.name = person.name;
         self.phone = person.phone;
       });
-    });
   };
 }
 
@@ -320,12 +319,12 @@ function Person() {
 
   //call an API and update the name and gender field in this object
   this.getRandomPerson = function() {
-    fetch('https://jsonplaceholder.typicode.com/users/1').then(response => {
-      response.json().then(person => {
+    fetch('https://jsonplaceholder.typicode.com/users/1')
+      .then(response => response.json())
+      .then(person => {
         this.name = person.name;
         this.phone = person.phone;
       });
-    });
   };
 }
 
