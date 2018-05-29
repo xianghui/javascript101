@@ -258,10 +258,100 @@ which takes in the failure callback.
 <iframe height='680' scrolling='no' title='Promise Example 2' src='//codepen.io/hsianghui/embed/wXvgKY/?height=680&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/hsianghui/pen/wXvgKY/'>Promise Example</a> by HsiangHui Lek (<a href='https://codepen.io/hsianghui'>@hsianghui</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+## Async - Await
+
+This is not exactly ES6 syntax, but rather an ES7 feature. ES7 comes with the
+`async` - `await` keywords which allow us to write even more concise codes that
+look like codes running in a synchronous manner. This syntax works immediately
+when we are dealing with `Promise` objects, so existing codes that use the
+`Promise` objects can work without much modification.
+
+```javascript
+//instead of:
+function sleep(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+
+sleep(2000).then(() => {
+  console.log('called after 2secs');
+});
+
+//after 2 seconds
+//"called after 2 secs" is printed
+
+//----------------------------------------
+
+//now with async-await
+function sleep(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+
+(async () => {
+  //this line will effectively sleep for 2 secs before going to the next line
+  await sleep(2000);
+
+  //this will only be executed 2 secs later
+  console.log('called after 2secs');
+})();
+```
+
+The idea is very simple. Given a promise that we want to resolve, we can add an
+`await` keyword before it to tell the JS engine to wait for the results to be
+available before executing the next statement. Note that we the `await` can only
+be used in a function defined with the `async` keyword. So, if we want to write
+codes that use `await`, we have to create an `async`
+[IIFE](/1-4-scoping#immediately-invoked-function-expression-iife).
+
+```javascript
+//async IIFE
+(async () => {
+  //...
+})();
+
+//or
+
+(async function() {
+  //...
+})();
+```
+
+If we need the value resolved from the promise, we can use a variable
+assignment.
+
+```javascript
+(async () => {
+  const results = await fetch('https://jsonplaceholder.typicode.com/users');
+  const json = await results.json();
+  console.log(json); //[{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+})();
+```
+
+To handle error cases, we just need to enclose it in `try`-`catch` (similar to
+normal JS codes).
+
+```javascript
+//simulate an error fetch
+(async () => {
+  try {
+    const results = await fetch('https://some_invalid_url');
+    //...
+  } catch (e) {
+    console.log('Error', e); //Error TypeError: Failed to fetch
+  }
+})();
+```
+
 ## `Promise.all`
 
-If we have multiple promise objects that need to be resolved, regardless of
-ordering, it is possible to use the `Promise.all` to resolve all of them.
+So far, the codes we have written were executing multiple promises in a
+synchronous manner. There are times when we do not want to execute the promises
+one after another. Rather, we might want to resolve a list of promise in a
+parallel manner. To do this, we could use the `Promise.all` syntax to resolve
+all of them in parallel rather than in a sequential manner.
 
 ```javascript
 var urls = [
