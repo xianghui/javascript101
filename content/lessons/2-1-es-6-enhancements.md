@@ -66,14 +66,14 @@ for (let i = 0; i < 10; i++) {
 
 In the rest of this section, we will elaborate on the following ES6 syntax:
 
-* [Arrow functions](/2-2-arrow-functions)
-* [String enhancements](/2-3-string-enhancements)
-* [ES6 class system](/2-4-es-6-class-system)
-* [Rest and Spread Operators](/2-5-rest-and-spread-operators)
-* [Destructuring](/2-6-destructuring)
-* [Promises](/2-7-promises)
-* [Module system](/2-8-module-system)
-* [Symbol, Iterators, Generator](2-9-symbols-iterators-generators)
+* [Arrow Functions](/2-2-arrow-functions)
+* [String Enhancements](/2-3-string-enhancements)
+* [ES6 Class System](/2-4-es-6-class-system)
+* [Object Enhancements](/2-5-object-enhancements)
+* [Rest and Spread Operators](/2-6-rest-and-spread-operators)
+* [Destructuring](/2-7-destructuring)
+* [Promises](/2-8-promises)
+* [Module System](/2-9-module-system)
 
 <div>
   <div class='text-left'>

@@ -332,6 +332,6 @@ import SomeClass, { sum } from './lib';
   </div>
 
   <div class='text-right'>
-    <a href="/2-10-symbols-iterators-generators">Next: 2.10 Symbols, Iterators, Generators</a>
+    <a href="/3-1-ajax">Next: 3.1 AJAX</a>
   </div>
 </div>
