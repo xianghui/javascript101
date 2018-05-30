@@ -234,7 +234,7 @@ Notice from above that now the asynchronous calls are chained up using `then()`
 rather than embedded inside other blocks like
 [before](/2-8-promises#callback-hell).
 
-The [Fetch API](/3-2-ajax) (which we will be discussing later in more details)
+The [Fetch API](/3-1-ajax) (which we will be discussing later in more details)
 provides a clean way to perform AJAX requests and uses promises. So, the above
 example can be achieved by the following.
 

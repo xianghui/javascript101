@@ -276,7 +276,7 @@ and XML (AJAX)** call in an object, and then updating the fields of the object
 based on the results of the AJAX call - `this` will not be referring to the
 current object! We have to use the same trick as before. This is quite a common
 use case and developers have been using this approach to make the program work
-as expected. The [Fetch API](/3-2-ajax) (`fetch()` and [Promises](/2-8-promises)
+as expected. The [Fetch API](/3-1-ajax) (`fetch()` and [Promises](/2-8-promises)
 (`.then()` keyword) will be discussed in later sections.
 
 ```javascript
