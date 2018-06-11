@@ -61,6 +61,16 @@ const msg2 = formatMessage('F', 'Jane', 'Doe');
 console.log(msg2); //Hi Ms Jane Doe
 ```
 
+In addition to expression, it could also be a function call.
+
+```javascript
+function foo() {
+  return 'foo';
+}
+
+console.log(`hello ${foo()}`); //hello foo
+```
+
 ## Common Usecases
 
 #### Dealing with strings having both `'` and `"`
