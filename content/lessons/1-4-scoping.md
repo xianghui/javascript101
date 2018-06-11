@@ -52,7 +52,7 @@ elaborated shortly).
 //Javascript Example
 var x = 10;
 {
-  let y = 20; //does not make a difference if we were to enclose with { }
+  let y = 20;
 }
 console.log(x); //10
 console.log(y); //Error: y is not defined
