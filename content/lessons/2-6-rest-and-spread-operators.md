@@ -171,7 +171,7 @@ console.log(flattenCombineSpread2);
 ```
 
 ```javascript
-//copying array
+//copying/cloning array
 var array1 = [1, 2, 3];
 
 var array1CopySlice = array1.slice();
@@ -182,6 +182,32 @@ console.log(array1CopySlice);
 var array1Copy = [...array1];
 console.log(array1Copy);
 //[1, 2, 3]
+```
+
+##### Convert "array-like" objects to array
+
+```javascript
+//get all <p> tag
+const allPara = document.querySelectorAll('p');
+
+//seems to be array but take a look at the __proto__ property
+//__proto__: NodeList
+//not array!
+console.log(allPara);
+
+//2 ways to convert to array
+
+//1) Using Array.from()
+//now take a look at the __proto__ property
+//__proto__: Array(0)
+const allParaArr1 = Array.from(allPara);
+console.log(allParaArr1);
+
+//2) Using spread + array literal
+//now take a look at the __proto__ property
+//__proto__: Array(0)
+const allParaArr2 = [...allPara];
+console.log(allParaArr2);
 ```
 
 ##### Function Call
@@ -306,32 +332,6 @@ var s = 'hello';
 var chars = [...s];
 console.log(chars);
 //["h", "e", "l", "l", "o"]
-```
-
-#### Clone arrays
-
-```javascript
-//can't clone array by assigning it to another array
-const array = ['a', 'b', 'c'];
-const cloneArray = array;
-
-cloneArray[0] = 'd';
-console.log(cloneArray); //[d, b, c]
-
-//original array is modified :(
-console.log(array); //[d, b, c]
-```
-
-The spread operator allows us to do a clone of arrays by spreading the values
-and creating another array.
-
-```javascript
-const array = ['a', 'b', 'c'];
-const cloneArray = [...array];
-
-cloneArray[0] = 'd';
-console.log(cloneArray); //[d, b, c]
-console.log(array); //[a, b, c]
 ```
 
 <div>
