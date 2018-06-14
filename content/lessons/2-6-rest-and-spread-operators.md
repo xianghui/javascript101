@@ -308,6 +308,32 @@ console.log(chars);
 //["h", "e", "l", "l", "o"]
 ```
 
+#### Clone arrays
+
+```javascript
+//can't clone array by assigning it to another array
+const array = ['a', 'b', 'c'];
+const cloneArray = array;
+
+cloneArray[0] = 'd';
+console.log(cloneArray); //[d, b, c]
+
+//original array is modified :(
+console.log(array); //[d, b, c]
+```
+
+The spread operator allows us to do a clone of arrays by spreading the values
+and creating another array.
+
+```javascript
+const array = ['a', 'b', 'c'];
+const cloneArray = [...array];
+
+cloneArray[0] = 'd';
+console.log(cloneArray); //[d, b, c]
+console.log(array); //[a, b, c]
+```
+
 <div>
   <div class='text-left'>
     <a href="/2-5-object-enhancements">Prev: 2.5 Object Enhancements</a>
