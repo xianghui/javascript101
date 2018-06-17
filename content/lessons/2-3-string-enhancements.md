@@ -71,6 +71,15 @@ function foo() {
 console.log(`hello ${foo()}`); //hello foo
 ```
 
+It is also possible to return another template literal from a template literal.
+This can be useful to generate html fragments.
+
+```javascript
+const array = ['item1', 'item2', 'item2'];
+const list = `<ul>${array.map(item => `<li>${item}</li>`).join('')}</ul>`;
+console.log(list); //<ul><li>item1</li><li>item2</li><li>item2</li></ul>
+```
+
 ## Common Usecases
 
 #### Dealing with strings having both `'` and `"`
