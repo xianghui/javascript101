@@ -375,10 +375,43 @@ var addPerson = url => {
 var addPersonPromises = urls.map(addPerson);
 
 //resolve all of them (not necessarily resolved in order)
-Promise.all(addPersonPromises).then(res => {
+Promise.all(addPersonPromises).then(() => {
   console.log('Finished all promises');
   console.log(peopleRecords); //[{…}, {…}, {…}]
 });
+```
+
+Since `Promise.all` returns a promise, it is also possible to use the `async` -
+`await` together with `Promise.all`.
+
+```javascript
+var urls = [
+  'https://jsonplaceholder.typicode.com/users/1',
+  'https://jsonplaceholder.typicode.com/users/2',
+  'https://jsonplaceholder.typicode.com/users/3'
+];
+
+var peopleRecords = [];
+
+var addPerson = url => {
+  return fetch(url)
+    .then(res => res.json())
+    .then(person => {
+      console.log(person);
+      peopleRecords.push(person);
+    });
+};
+
+//an array of promises
+var addPersonPromises = urls.map(addPerson);
+
+//resolve all of them (not necessarily resolved in order)
+
+(async function() {
+  await Promise.all(addPersonPromises);
+  console.log('Finished all promises');
+  console.log(peopleRecords); //[{…}, {…}, {…}]
+})();
 ```
 
 <div>
