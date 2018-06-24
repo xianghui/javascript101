@@ -382,7 +382,7 @@ Promise.all(addPersonPromises).then(() => {
 ```
 
 Since `Promise.all` returns a promise, it is also possible to use the `async` -
-`await` together with `Promise.all`.
+`await` syntax together with `Promise.all`.
 
 ```javascript
 var urls = [

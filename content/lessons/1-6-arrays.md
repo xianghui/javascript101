@@ -213,10 +213,10 @@ The methods are summarized below:
 ### Iterative Methods
 
 In this subsection, we will explore some of the commonly used Array methods for
-performing iterative type of operations - `forEach()`, `filter()`, `map()`, and
-`reduce()`. These 4 operations take in a **callback function** as the parameter.
-This callback function is applied multiple times to each of the elements in the
-array.
+performing iterative type of operations - `forEach()`, `filter()`, `map()`,
+`reduce()`, `find()`, and `findIndex()`. These 6 operations take in a **callback
+function** as the parameter. This callback function is applied multiple times to
+each of the elements in the array.
 
 First up, `forEach()` will iterate through all the elements in the array. For
 each element, the callback will be invoked and the current element is supplied
@@ -311,6 +311,34 @@ console.log(sum1); //0 + 0 + 1 + 2 + 3 + 4 + 5 = 15
 var sum2 = array1.reduce(sumReducer, 10);
 
 console.log(sum2); //10 + 0 + 1 + 2 + 3 + 4 + 5 = 25
+```
+
+`find()` is an ES6 feature which allows us to find a particular item. Similar to
+`filter()`, it takes in a callback function which will determine which item we
+are interested in. However, unlike `filter()`, `find()` will only return the
+first element that satisfies the callback function.
+
+```javascript
+var array1 = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }];
+
+var john = array1.find(function(item) {
+  return item.name === 'John Doe';
+});
+
+console.log(john); //{id: 1, name: "John Doe"}
+```
+
+`findIndex()` is similar to `find()` which will return the index of the first
+item instead of the item itself. This is also an ES6 feature.
+
+```javascript
+var array1 = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }];
+
+var johnIndex = array1.findIndex(function(item) {
+  return item.name === 'John Doe';
+});
+
+console.log(johnIndex); //0
 ```
 
 ### Other Common Methods
