@@ -1,7 +1,0 @@
--section on es6 features
--strict mode
--destructuring (array, object)
--callbacks, async-await
--arrow functions
--map,forEach
--add Object.XXX methods in the 1.5 Objects section

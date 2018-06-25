@@ -287,7 +287,7 @@ example to indicate expected content type or to supply authorization tokens.
 fetch('https://jsonplaceholder.typicode.com/users/1', {
   method: 'GET',
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json'
   }
 })
@@ -302,7 +302,7 @@ fetch('https://jsonplaceholder.typicode.com/users/1', {
 fetch('https://jsonplaceholder.typicode.com/users/1', {
   method: 'GET',
   headers: {
-    'Authorization': 'Bearer SOME_TOKEN_STRING'
+    Authorization: 'Bearer SOME_TOKEN_STRING'
   }
 })
   .then(res => res.json())
@@ -350,4 +350,7 @@ there is a need to allow such a scenario.
     <a href="/2-9-module-system">Prev: 2.9 Module System</a>
   </div>
 
+  <div class='text-right'>
+    <a href="/3-2-strings">Next: 3.2 Strings</a>
+  </div>
 </div>
