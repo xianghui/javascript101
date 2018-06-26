@@ -326,6 +326,25 @@ export function sum(n1, n2) {
 import SomeClass, { sum } from './lib';
 ```
 
+To import a library which is installed using `npm install XXX` (library should
+be found in the **node_modules** folder), we just need to specify the library
+name (same name as the folder name in node_modules) without `./`. `./` can be
+thought of as specifying that we are trying to use relative paths.
+
+```javascript
+//assume we have already done this previously:
+//npm install moment
+import moment from 'moment';
+
+const tomorrow = moment()
+  .add(1, 'days')
+  .format('MMM DD YYYY');
+
+console.log(`Tomorrow is ${tomorrow}`);
+//e.g.
+//Tomorrow is Jun 27 2018
+```
+
 <div>
   <div class='text-left'>
     <a href="/2-8-promises">Prev: 2.8 Promises</a>
