@@ -17,7 +17,8 @@ var sum = function(num1, num2) {
   return num1 + num2;
 };
 
-var n1 = 1, n2 = 2;
+var n1 = 1,
+  n2 = 2;
 var result = sum(1, 2); //3
 ```
 
@@ -398,6 +399,40 @@ Specifically:
 * function can be passed as argument (function values)
 * function can be returned from a function (higher-order function)
 * function can be assigned to a variable
+
+## Strict Mode
+
+JS comes with a **strict mode** option. This is achieved by defining the
+`'use strict';` construct. This looks a bit strange as we are defining a string
+out of nowhere but it is the way to tell the JS engine we want to enable
+**strict mode**. One of the things we cannot do in **strict mode** is to use
+undefined variables.
+
+```javascript
+function foo() {
+  'use strict';
+  x = 1;
+}
+
+foo(); //Error: x is not defined
+```
+
+```javascript
+'use strict';
+y = 1; //Error: y is not defined
+```
+
+Note that `'use strict'` must be on the top of the program/function.
+
+```javascript
+function bar() {
+  var x = 10;
+  'use strict';
+  y = 1;
+}
+
+foo(); //Error: foo is not defined
+```
 
 <div>
   <div class='text-left'>
