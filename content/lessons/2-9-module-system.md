@@ -99,9 +99,15 @@ export const someArray = [1, 2, 3];
 
 //classes
 export class Person {}
+
+//possible to rename named exports
+function multiply(n1, n2) {
+  return n1 * n2;
+}
+export { multiply as times };
 ```
 
-<iframe src="https://codesandbox.io/embed/zkn6lw0o9x?expanddevtools=1&hidenavigation=1" style="width:100%; height:800px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/x3j6167kxo?expanddevtools=1&hidenavigation=1" style="width:100%; height:870px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ```javascript
 //The following named exports not allowed
@@ -186,7 +192,7 @@ export default 'blar';
 
 ## Import
 
-`import` is really just the opposite of `export`. Since **imports are hosted**,
+`import` is really just the opposite of `export`. Since **imports are hoisted**,
 they should most likely be on the top of the file rather than appearing in the
 middle of the program (for better readability). Note that imports (and exports)
 must be **at the top level**.
