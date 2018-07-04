@@ -455,6 +455,67 @@ console.log(child.location3); //grandparent
 console.log(child.location4); //grantgrandparent
 ```
 
+## Getting Properties of an Object
+
+We can use the `for`-`in` loop to get the list of properties of an object.
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+var john = new Person('john', 20);
+
+for (var property in john) {
+  console.log(property);
+}
+//name
+//age
+```
+
+However, note that it will also show the properties that is in the `__proto__`.
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.MAX_Age = 99;
+
+var john = new Person('john', 20);
+
+for (var property in john) {
+  console.log(property);
+}
+//name
+//age
+//MAX_AGE
+```
+
+As discussed before, we can use the special `hasOwnProperty()` method to check
+whether a property is from its own property or from protoypal inheritance.
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.MAX_Age = 99;
+
+var john = new Person('john', 20);
+
+for (var property in john) {
+  if (john.hasOwnProperty(property)) {
+    console.log(property);
+  }
+}
+//name
+//age
+```
+
 <div>
   <div class='text-left'>
     <a href="/1-4-scoping">Prev: 1.4 Scoping</a>
