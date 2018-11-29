@@ -226,6 +226,62 @@ function parent() {
 parent(); //1
 ```
 
+Note that each function captures the **reference to the parent's environment**
+rather than keeping a copy of the parent's environment values. For example,
+consider a slight change in the above example, where the initial values of the
+parent's environment are changed.
+
+```javascript
+var a = 1; //env1 = [a:1,...] (window object)
+function parent() {
+  var b = 2; //env2 = [b:2], env1
+  function child() {
+    //env3 = [c: 3], env2
+    var c = 3;
+
+    //when trying to access a:
+    //can't find in local environment (env3)
+    //       try parent's environment (env2)
+    //can't find in parent's environment (env2)
+    //       try parent's parent's environment (env1)
+    //etc
+    console.log(a); //resolve value of 'a'
+  }
+  child();
+}
+
+//value in the parent's environment is changed
+a = 2; //env1 = [a:2,...]
+parent(); //2
+```
+
+```javascript
+//Another example
+var a = 1; //env1 = [a:1,...] (window object)
+function parent() {
+  var b = 2; //env2 = [b:2], env1
+  function child() {
+    //env3 = [c: 3], env2
+    var c = 3;
+
+    //when trying to access a:
+    //can't find in local environment (env3)
+    //       try parent's environment (env2)
+    console.log(b); //resolve value of 'b'
+  }
+  b = 3; //env2 = [b:3,...]
+  child();
+}
+
+parent(); //3
+```
+
+What the above examples show is that when the value of a variable is needed in
+the function, it will try to resolve the value of the variable with the name
+accordingly. The value of the variables in environments can change along the way
+during runtime. The values are resolved using the environments rather than
+resolved using a copy of the environment when it was declared.
+
 One thing to be careful is that when declaring variables in functions, if you do
 not use the `var`, `const`, or `let` keyword, the variable will be declared in
 the global scope/namespace instead.
