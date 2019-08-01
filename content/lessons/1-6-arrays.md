@@ -411,6 +411,14 @@ for (var key of iterator) {
   //2 - c
 }
 
+//if we just want the values
+for (var val of array11) {
+  console.log(val);
+  //a
+  //b
+  //c
+}
+
 //another way to work with iterators in JS
 for (var key in array11) {
   console.log(key + ' - ' + array11[key]);
