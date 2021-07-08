@@ -256,6 +256,37 @@ import { a as b } from './lib.js';
 console.log(b); //10
 ```
 
+*Note that if we are using the `require()` keyword to include an external library (mostly used for NodeJS apps), then renaming syntax is similar to destructuring.
+
+```javascript
+//case for export/import using require()
+//database.js
+module.exports = {
+  fetch: () => {
+    //...
+  }
+}
+
+//main.js
+const {
+  fetch: fetchData //this syntax is ok
+} = require("./database.js")
+```
+
+```javascript
+//math.js
+export default {
+  add: (n1, n2) => {
+    return n1 + n2
+  }
+}
+
+//main.js
+import { add } from './math'; //not allowed!
+
+```
+
+
 ```javascript
 //invalid - no destructuring
 //lib.js
@@ -350,6 +381,24 @@ console.log(`Tomorrow is ${tomorrow}`);
 //e.g.
 //Tomorrow is Jun 27 2018
 ```
+
+*Note that if we are not allowed to perform destructuring on a default export which happens to be an object.*
+
+```javascript
+//math.js
+export default {
+  add: (n1, n2) => {
+    return n1 + n2
+  }
+}
+
+//main.js
+import { add } from './math'; //not allowed!
+//again we can do this for module.exports
+//(check the example above)
+
+```
+
 
 <div>
   <div class='text-left'>
